@@ -85,5 +85,7 @@ def _preview(lo, qayta):
     m, k = lo.kesh / "matn.json", lo.kesh / "kesish.json"
     if qayta or not (m.exists() and k.exists()):
         ishga_tushir("tahlil", lo, qayta=qayta)
-    return preview(lo, uslub_yukla(lo.uslub_nomi), json.loads(m.read_text(encoding="utf-8")),
-                   json.loads(k.read_text(encoding="utf-8")))
+    from .matn import qolda_vaqtlar
+    mt = json.loads(m.read_text(encoding="utf-8"))
+    mt["sozlar"] = qolda_vaqtlar(mt["sozlar"], lo.soz_vaqtlari)      # keshdan keyin ham qo'lda vaqtlar ustun
+    return preview(lo, uslub_yukla(lo.uslub_nomi), mt, json.loads(k.read_text(encoding="utf-8")))

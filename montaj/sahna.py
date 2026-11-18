@@ -62,8 +62,10 @@ def sahna_qur(lo, uslub, matn_n, kesish_n) -> Sahna:
     if hook_or:
         el.append(Hook(0.0, nat(hook_or[1]), lo.hook, uslub, qatorlar=uslub.get("_hook_qatorlar")))
     for i, b in enumerate(bol):
-        oxiri = dav if i == len(bol) - 1 else nat(b["oxiri"])
-        el.append(Subtitr(nat(b["boshi"]), oxiri, b["matn"], uslub))
+        oxirgi = i == len(bol) - 1
+        oxiri = dav if oxirgi else nat(b["oxiri"])
+        # Chiqish fade faqat oxirgi subtitrda; ketma-ketlarida keskin almashuv (yangisi kirish animatsiyasi bilan)
+        el.append(Subtitr(nat(b["boshi"]), oxiri, b["matn"], uslub, chiqish_s=0.2 if oxirgi else 0.0))
     return Sahna(el, dav, fps, orl)
 
 

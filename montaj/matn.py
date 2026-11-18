@@ -77,6 +77,7 @@ def moslash(foyd, whisp):
     return juft[::-1]
 
 
+MIN_SOZ_S = 0.08           # qo'lda chegaradan keyin har so'zga qoladigan eng kam vaqt
 CHUQURLIK_DB = 10.0        # chegara faqat aniq energiya chuqurligiga suriladi
 
 
@@ -178,6 +179,42 @@ def farqlar(foyd, whisp, juft):
     return natija
 
 
+def qolda_vaqtlar(sozlar, tuzatishlar):
+    """Foydalanuvchi quloq bilan tasdiqlagan so'z boshlanish vaqtlari (manba videosi, soniya).
+
+    tuzatishlar: [{"soz": "Biz", "takror": 1, "boshi": 7.58}] — `takror` shu so'zning nechanchi
+    uchrashuvi (1 dan). Oldingi so'zning oxiri shu vaqtga suriladi. Agar yangi vaqt keyingi
+    so'zlarni siqib qo'ysa, ular (har biri kamida MIN_SOZ_S bo'lguncha) yangi chegaradan keyingi
+    oraliqqa harf uzunligiga mutanosib qayta taqsimlanadi. Matn o'zgarmaydi.
+    Belgilar: tasdiqlangan so'z — manba "foydalanuvchi_chegarasi", tasdiq "faqat_boshi" (oxiri emas);
+    qayta taqsimlangan so'zlar — tasdiq "yoq".
+    """
+    for tz in tuzatishlar or []:
+        topildi = [k for k, s in enumerate(sozlar) if normal(s["soz"]) == normal(tz["soz"])]
+        n = tz.get("takror", 1)
+        if len(topildi) < n:
+            raise ValueError(f"so'z topilmadi: {tz['soz']!r} ({n}-uchrashuv)")
+        k, t = topildi[n - 1], float(tz["boshi"])
+        past = sozlar[k - 1]["boshi"] + MIN_SOZ_S if k else 0.0
+        if not past <= t < sozlar[-1]["oxiri"] - MIN_SOZ_S * (len(sozlar) - k):
+            raise ValueError(f"{tz['soz']!r} uchun vaqt {t} ruxsat etilgan oraliqda emas")
+        m = k
+        while m < len(sozlar) - 1 and sozlar[m]["oxiri"] - t < MIN_SOZ_S * (m - k + 1):
+            m += 1
+        uz = [max(1, len(normal(sozlar[x]["soz"]))) for x in range(k, m + 1)]
+        oxir, jami, v = sozlar[m]["oxiri"], sum(uz), t
+        for x, u in zip(range(k, m + 1), uz):
+            sozlar[x]["boshi"] = round(v, 3)
+            v += (oxir - t) * u / jami
+            sozlar[x]["oxiri"] = round(v, 3)
+            if x > k:
+                sozlar[x]["manba"], sozlar[x]["tasdiq"] = "qayta_taqsimlangan", "yoq"
+        sozlar[k]["manba"], sozlar[k]["tasdiq"] = "foydalanuvchi_chegarasi", "faqat_boshi"
+        if k:
+            sozlar[k - 1]["oxiri"] = round(t, 3)
+    return sozlar
+
+
 def matn_bosqichi(lo, ovoz, qayta=False) -> dict:
     from .ovoz import audio_oqi
     gacha = ovoz.get("gacha_s")
@@ -186,6 +223,7 @@ def matn_bosqichi(lo, ovoz, qayta=False) -> dict:
     foyd = tokenlar(lo.matn)
     juft = moslash(foyd, whisp)
     sozlar = vaqtlarni_qur(foyd, whisp, juft, ovoz["rms_db"], ovoz["gap_bolaklari"])
+    sozlar = qolda_vaqtlar(sozlar, lo.soz_vaqtlari)
     return {
         "eshitilgan_xom": " ".join(w["soz"] for w in whisp),
         "sozlar": sozlar,

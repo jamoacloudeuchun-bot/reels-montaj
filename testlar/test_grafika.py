@@ -87,3 +87,30 @@ def test_manba_vaqti_natijaga():
     assert manba_vaqti_natijaga(10 / 60, orl, 60) == 0
     assert manba_vaqti_natijaga(5.6, orl, 60) == pytest.approx(321 / 60)     # kesilgan joy -> keyingi bo'lak
     assert manba_vaqti_natijaga(9.5, orl, 60) == pytest.approx(520 / 60)
+
+
+def _opacity(el, t):
+    q = Image.new("RGBA", (1080, 1920), (0, 0, 0, 0))
+    u = dict(US, qoraytirish={"pastki_gradient": False, "sarlavha_ortida": None, "subtitr_ortida": None})
+    el.uslub = u
+    el.chiz(t, q)
+    return int(np.asarray(q)[..., 3].max())
+
+
+def test_ketma_ket_subtitr_almashuvgacha_toliq_korinadi():
+    from montaj.sahna import sahna_qur
+    from types import SimpleNamespace
+    sozlar = _sozlar()
+    lo = SimpleNamespace(hook=HOOK)
+    n = len(sozlar) * 0.37 + 0.3
+    sahna = sahna_qur(lo, US, {"sozlar": sozlar}, {"fps": "30/1", "saqlanadigan_kadrlar": [[0, int(n * 30)]],
+                                                   "natija_kadr": int(n * 30)})
+    sub = [e for e in sahna.elementlar if type(e).__name__ == "Subtitr"]
+    assert [e.chiqish_s for e in sub] == [0.0, 0.0, 0.2]                    # fade faqat oxirgisida
+    for a, b in zip(sub, sub[1:]):
+        assert a.oxiri == b.boshi
+        assert _opacity(a, a.oxiri - 0.01) == 255                            # almashuvgacha to'liq
+        assert _opacity(b, b.boshi + 0.001) < 20 and _opacity(b, b.boshi + 0.2) == 255   # 0.2 s kirish
+    assert _opacity(sub[-1], sub[-1].oxiri - 0.1) < 200                      # oxirgisi so'nadi
+    hook = next(e for e in sahna.elementlar if type(e).__name__ == "Hook")
+    assert hook.oxiri == sub[0].boshi

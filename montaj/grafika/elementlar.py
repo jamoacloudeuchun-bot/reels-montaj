@@ -80,7 +80,11 @@ class Hook(Element):
 
 @dataclass
 class Subtitr(Element):
-    """Subtitr (y ≈ 1260): pastdan 36 px ko'tarilib 0.2 s fade; ortida yumshoq qoraytirish."""
+    """Subtitr (y ≈ 1260): pastdan 36 px ko'tarilib 0.2 s fade; ortida yumshoq qoraytirish.
+
+    chiqish_s: oxirgi subtitrda 0.2 s fade; ketma-ket subtitrda 0 — almashuvgacha to'liq ko'rinadi
+    (aytilayotgan so'z tugamasdan so'nmaydi), yangisi o'z kirish animatsiyasi bilan chiqadi.
+    """
     matn: str
     uslub: dict
     chiqish_s: float = 0.2

@@ -7,7 +7,8 @@ Loyiha: `loyihalar/<nom>/loyiha.json`
       "matn": "Foydalanuvchi tasdiqlagan matn",
       "hook": "HOOK MATNI" | null,
       "uslub": "asosiy",                    # uslublar/<uslub>/uslub.json
-      "til": "uz"
+      "til": "uz",
+      "soz_vaqtlari": [{"soz": "Biz", "boshi": 7.58}]   # ixtiyoriy: quloq bilan tasdiqlangan vaqtlar
     }
 Natija va kesh fayllari `loyihalar/<nom>/kesh/` va `.../natija/` ga yoziladi (git'dan tashqarida).
 """
@@ -35,6 +36,7 @@ class Loyiha:
     uslub_nomi: str
     til: str
     papka: Path
+    soz_vaqtlari: list | None = None
 
     @property
     def kesh(self) -> Path:
@@ -69,6 +71,7 @@ def loyiha_yukla(yol) -> Loyiha:
         uslub_nomi=d.get("uslub", "asosiy"),
         til=d.get("til", "uz"),
         papka=yol.parent,
+        soz_vaqtlari=d.get("soz_vaqtlari"),
     )
 
 

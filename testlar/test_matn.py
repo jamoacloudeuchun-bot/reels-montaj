@@ -44,3 +44,31 @@ def test_tekis_energiyada_chegara_surilmaydi():
     assert _rms_min(db, 0.5, 1.2, 0.025, asl=0.6) == 0.6
     db[40] = -40                                   # 30 dB chuqurlik — pauza
     assert _rms_min(db, 0.5, 1.2, 0.025, asl=0.6) == 1.0
+
+
+def test_qolda_vaqt_chegarani_suradi():
+    from montaj.matn import qolda_vaqtlar
+    s = [{"soz": "qoldiring.", "boshi": 7.0, "oxiri": 7.36, "manba": "w"},
+         {"soz": "Biz", "boshi": 7.36, "oxiri": 7.6, "manba": "w"}]
+    r = qolda_vaqtlar(s, [{"soz": "biz", "boshi": 7.5}])
+    assert r[0]["oxiri"] == 7.5 and r[1]["boshi"] == 7.5 and r[1]["manba"] == "foydalanuvchi_chegarasi" and r[1]["tasdiq"] == "faqat_boshi"
+
+
+def test_qolda_vaqt_notogri_bolsa_xato():
+    import pytest
+    from montaj.matn import qolda_vaqtlar
+    s = [{"soz": "a", "boshi": 0, "oxiri": 1, "manba": "w"}, {"soz": "b", "boshi": 1, "oxiri": 2, "manba": "w"}]
+    with pytest.raises(ValueError):
+        qolda_vaqtlar(s, [{"soz": "b", "boshi": 5}])
+
+
+def test_qolda_vaqt_keyingi_sozlarni_qayta_taqsimlaydi():
+    from montaj.matn import qolda_vaqtlar
+    s = [{"soz": w, "boshi": a, "oxiri": b, "manba": "w"} for w, a, b in
+         [("qoldiring.", 7.03, 7.36), ("Biz", 7.36, 7.50), ("sizga", 7.50, 7.80), ("maxsus", 7.80, 8.07)]]
+    r = qolda_vaqtlar(s, [{"soz": "Biz", "boshi": 7.58}])
+    assert [x["soz"] for x in r] == ["qoldiring.", "Biz", "sizga", "maxsus"]       # matn o'zgarmaydi
+    assert r[0]["oxiri"] == r[1]["boshi"] == 7.58
+    assert r[1]["oxiri"] == r[2]["boshi"] and r[2]["oxiri"] == 7.80 and r[3]["boshi"] == 7.80
+    assert all(x["oxiri"] - x["boshi"] >= 0.08 for x in r)
+    assert r[1]["tasdiq"] == "faqat_boshi" and r[2]["tasdiq"] == "yoq"           # ichki vaqtlar tasdiqlanmagan

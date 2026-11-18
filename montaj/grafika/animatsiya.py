@@ -32,7 +32,9 @@ def kirish_kotarilish(t: float):
 
 
 def chiqish(t_qolgan: float, davom: float = CHIQISH_S) -> float:
-    """Oxirgi `davom` soniyada 1 -> 0."""
+    """Oxirgi `davom` soniyada 1 -> 0. davom <= 0: chiqish fade yo'q (keyingi element o'rnini egallaydi)."""
+    if davom <= 0:
+        return 1.0 if t_qolgan > 0 else 0.0
     return min(1.0, max(0.0, t_qolgan / davom))
 
 

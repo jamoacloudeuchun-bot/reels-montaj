@@ -2,7 +2,15 @@
   "nom": "harbiy_qollanma",
   "video": "/root/.claude/uploads/12690686-617d-535d-be6f-c9cf91badb6c/efdb0d6b-copy_29EEBBA6-5EE9-4A85-9F32-290196267350.mov",
   "matn": "Agar siz ham harbiy oliy ta’lim muassasalariga kirish bo‘yicha qo‘llanmaga ega bo‘lishni istasangiz, kommentariyada “+” belgisini qoldiring. Biz sizga maxsus qo‘llanmani taqdim etamiz!",
-  "hook": "HARBIY OLIY TA’LIMGA KIRISH QO‘LLANMASI",
+  "hook": "HARBIY OLIYGOHLARGA KIRISH QO‘LLANMASI",
   "uslub": "asosiy",
-  "til": "uz"
+  "til": "uz",
+  "soz_vaqtlari": [
+    {
+      "soz": "Biz",
+      "takror": 1,
+      "boshi": 7.58,
+      "izoh": "«qoldiring | Biz» chegarasi foydalanuvchi tomonidan quloq bilan tasdiqlangan"
+    }
+  ]
 }
