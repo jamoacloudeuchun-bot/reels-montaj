@@ -1,0 +1,54 @@
+{
+  "nomi": "Andoza_01",
+  "izoh": "CLAUDE.md asosiy qoida. Qiymatlar 1080x1920 uchun. 'manba' maydoni: olchandi | korildi | taxmin | claude_md | foydalanuvchi_qarori.",
+  "kadr": { "eni": 1080, "boyi": 1920, "safe_zona": { "x": [150, 930], "y": [230, 1595] }, "yon_kartochka_min_x": 80, "manba": "claude_md" },
+  "ranglar": {
+    "matn": { "qiymat": "#FFFFFF", "manba": "claude_md" },
+    "oltin_grafik": { "qiymat": "#E6AD49", "faqat": ["ikonka", "check_belgisi", "grafik_element"], "manba": "olchandi + foydalanuvchi_qarori" },
+    "fon_gradient_tepa": { "qiymat": "#0F1E3D", "manba": "olchandi" },
+    "fon_gradient_orta": { "qiymat": "#0C1934", "manba": "olchandi" },
+    "lower_third_fon": { "qiymat": "#070E24", "manba": "olchandi" },
+    "kontent_kartochka_fon": { "qiymat": "#212E4B", "manba": "olchandi" }
+  },
+  "shrift": {
+    "asosiy": { "oila": "Oswald", "vazn": "Bold", "holat": "o'rnatilmagan, tasdiq kutilmoqda", "manba": "taxmin (andozaga o'xshash) + tekshirildi" },
+    "zaxira": { "oila": "Inter", "vazn": "ExtraBold", "holat": "o'rnatilgan" },
+    "tracking": [0, 20],
+    "soya": false,
+    "manba_qoidalar": "claude_md"
+  },
+  "montaj_ritmi": {
+    "bolak_davomiyligi_s": [3, 5],
+    "grafika_ulushi": 0.5,
+    "almashish": "jumla oxirida, kadr raqami bilan",
+    "transition": "asosan keskin kesim",
+    "manba": "olchandi"
+  },
+  "elementlar": {
+    "lower_third": { "x": [90, 990], "y": [1155, 1380], "radius": 24, "ikonka_plitka_px": 120, "tuzilish": "ikonka + kichik yorliq + katta so'z", "manba": "olchandi (720p dan x1.5)" },
+    "sarlavha": { "y_markaz": 420, "kenglik_max": 780, "manba": "claude_md" },
+    "subtitr": { "y_markaz": 1260, "manba": "claude_md" },
+    "izoh_matn_px": 44,
+    "royxat": { "tuzilish": "raqamli doira + nom + o'ngda oltin check", "check_ketma_ket": true, "manba": "korildi" },
+    "fon_bezak": { "yoy_chiziqlar": true, "perspektiv_tor": true, "manba": "korildi" }
+  },
+  "animatsiya": {
+    "kirish_pop": { "shkala_foiz": [80, 106, 100], "davomiylik_s": [0.2, 0.34] },
+    "matn_kirish": { "kotarilish_px": 36, "fade_s": 0.2 },
+    "chiqish_fade_s": [0.2, 0.3],
+    "zoom_zarba": { "foiz": [100, 111], "kirish_s": 0.3, "chiqish_s": 0.35, "faqat": "ta'kid so'z" },
+    "blur": false,
+    "manba": "claude_md"
+  },
+  "ovoz": {
+    "musiqa_nutqdan_past_db": 12,
+    "musiqa_lufs": -21,
+    "ducking": true,
+    "yakuniy_lufs": -14,
+    "sfx": { "faqat": ["grafika"], "turlari": ["pop", "whoosh", "hit"], "gap_ustida_db": -5 },
+    "andoza_temp_bpm": { "qiymat": 85, "manba": "taxmin" },
+    "manba": "claude_md + olchandi"
+  },
+  "rang_ishlovi": { "kamera_videosi": "o'z rangida", "manba": "claude_md" },
+  "kochirilmaydi": ["andoza matnlari", "DXX va QALQON AKADEMIYASI logotip/nomlari", "foto kartochkalar", "oxirgi brend kartochkasi"]
+}
