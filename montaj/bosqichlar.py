@@ -27,9 +27,11 @@ def _ovoz(lo, q, qayta):
     return d
 
 
-def ishga_tushir(buyruq, lo, qayta=False) -> dict:
+def ishga_tushir(buyruq, lo, qayta=False, tasdiq=False) -> dict:
     if buyruq == "preview":
         return _preview(lo, qayta)
+    if buyruq in ("render-preview", "render"):
+        return _render(lo, buyruq == "render", tasdiq)
     if not lo.video.exists():
         raise FileNotFoundError(f"video topilmadi: {lo.video}")
     q = _qabul(lo, qayta and buyruq in ("qabul", "tahlil"))
@@ -85,7 +87,44 @@ def _preview(lo, qayta):
     m, k = lo.kesh / "matn.json", lo.kesh / "kesish.json"
     if qayta or not (m.exists() and k.exists()):
         ishga_tushir("tahlil", lo, qayta=qayta)
+    mt, kn = _matn_kesish(lo)
+    return preview(lo, uslub_yukla(lo.uslub_nomi), mt, kn)
+
+
+def _matn_kesish(lo):
     from .matn import qolda_vaqtlar
+    m, k = lo.kesh / "matn.json", lo.kesh / "kesish.json"
+    if not (m.exists() and k.exists()):
+        ishga_tushir("tahlil", lo)
     mt = json.loads(m.read_text(encoding="utf-8"))
     mt["sozlar"] = qolda_vaqtlar(mt["sozlar"], lo.soz_vaqtlari)      # keshdan keyin ham qo'lda vaqtlar ustun
-    return preview(lo, uslub_yukla(lo.uslub_nomi), mt, json.loads(k.read_text(encoding="utf-8")))
+    return mt, json.loads(k.read_text(encoding="utf-8"))
+
+
+def _render(lo, yakuniy, tasdiq):
+    from .loyiha import uslub_yukla
+    from .ovoz_miks import ovoz_tayyorla
+    from .preview import vaqtlarni_tanla
+    from .render import kadrlar_render_yolida, render, tekshir
+    from .sahna import safe_tekshir, sahna_qur
+    mt, kn = _matn_kesish(lo)
+    sahna = sahna_qur(lo, uslub_yukla(lo.uslub_nomi), mt, kn)
+    xato = safe_tekshir(sahna)
+    if xato:
+        raise RuntimeError(f"safe zona buzilishlari: {xato[:3]}")
+    if yakuniy and not tasdiq:
+        from .render import TasdiqYoq
+        raise TasdiqYoq("Render faqat foydalanuvchi tasdig'idan keyin (CLAUDE.md). Avval render-preview ni ko'rsating.")
+    ovoz = ovoz_tayyorla(lo, kn, sahna, lo.kesh / "ovoz_tozalangan.wav")
+    if not yakuniy:
+        papka = lo.natija / "render_preview"
+        papka.mkdir(parents=True, exist_ok=True)
+        for eski in papka.glob("*.png"):
+            eski.unlink()
+        kadrlar = kadrlar_render_yolida(lo, sahna, vaqtlarni_tanla(sahna), papka)
+        return {"kadrlar": kadrlar, "ovoz": ovoz, "safe_buzilishlar": xato}
+    chiqish = lo.natija / f"{lo.nom}.mp4"
+    render(lo, sahna, ovoz["fayl"], chiqish, tasdiq=True)
+    t = tekshir(lo, sahna, chiqish)
+    (lo.natija / "tekshiruv.json").write_text(json.dumps(t, ensure_ascii=False, indent=1), encoding="utf-8")
+    return {"video": str(chiqish), "ovoz": ovoz, "tekshiruv": t}

@@ -7,6 +7,8 @@
   kesish    kadr raqamli kesish rejasi (B2)
   tahlil    qabul + ovoz + matn + kesish ketma-ket (B2)
   preview   3–4 ta namuna kadr + safe zona tekshiruvi (B3), render emas
+  render-preview  yakuniy ovoz (-14 LUFS) + 3–4 kadr AYNAN render yo'lidan (B4), render emas
+  render    yakuniy render + avtomatik tekshiruv — faqat --tasdiq bilan (CLAUDE.md)
 """
 import argparse
 import json
@@ -21,9 +23,10 @@ def _chop(d):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="montaj")
-    ap.add_argument("buyruq", choices=["tekshir", "qabul", "ovoz", "matn", "kesish", "tahlil", "preview"])
+    ap.add_argument("buyruq", choices=["tekshir", "qabul", "ovoz", "matn", "kesish", "tahlil", "preview", "render-preview", "render"])
     ap.add_argument("loyiha")
     ap.add_argument("--qayta", action="store_true", help="keshni e'tiborsiz qoldirib qayta hisoblash")
+    ap.add_argument("--tasdiq", action="store_true", help="foydalanuvchi preview'ni tasdiqlagan (render uchun shart)")
     a = ap.parse_args(argv)
     try:
         lo = loyiha_yukla(a.loyiha)
@@ -37,7 +40,11 @@ def main(argv=None):
         return 0 if lo.video.exists() else 1
 
     from . import bosqichlar  # og'ir kutubxonalar faqat kerak bo'lganda yuklanadi
-    natija = bosqichlar.ishga_tushir(a.buyruq, lo, qayta=a.qayta)
+    try:
+        natija = bosqichlar.ishga_tushir(a.buyruq, lo, qayta=a.qayta, tasdiq=a.tasdiq)
+    except PermissionError as e:
+        print(f"TO'XTATILDI: {e}", file=sys.stderr)
+        return 3
     _chop(natija)
     return 0
 

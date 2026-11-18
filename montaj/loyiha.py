@@ -8,7 +8,10 @@ Loyiha: `loyihalar/<nom>/loyiha.json`
       "hook": "HOOK MATNI" | null,
       "uslub": "asosiy",                    # uslublar/<uslub>/uslub.json
       "til": "uz",
-      "soz_vaqtlari": [{"soz": "Biz", "boshi": 7.58}]   # ixtiyoriy: quloq bilan tasdiqlangan vaqtlar
+      "soz_vaqtlari": [{"soz": "Biz", "boshi": 7.58}],  # ixtiyoriy: quloq bilan tasdiqlangan vaqtlar
+      "musiqa": {"fayl": "/yo'l/trek.mp3", "boshi_s": null},  # ixtiyoriy, foydalanuvchi fayli
+      "asosiy_moment_s": null,             # ixtiyoriy: musiqa drop'i to'g'rilanadigan natija vaqti
+      "sfx": [{"fayl": "/yo'l/pop.wav", "t": 2.4}]          # ixtiyoriy: faqat grafika paydo bo'lganda
     }
 Natija va kesh fayllari `loyihalar/<nom>/kesh/` va `.../natija/` ga yoziladi (git'dan tashqarida).
 """
@@ -37,6 +40,9 @@ class Loyiha:
     til: str
     papka: Path
     soz_vaqtlari: list | None = None
+    musiqa: dict | None = None
+    asosiy_moment_s: float | None = None
+    sfx: list | None = None
 
     @property
     def kesh(self) -> Path:
@@ -72,6 +78,9 @@ def loyiha_yukla(yol) -> Loyiha:
         til=d.get("til", "uz"),
         papka=yol.parent,
         soz_vaqtlari=d.get("soz_vaqtlari"),
+        musiqa=d.get("musiqa"),
+        asosiy_moment_s=d.get("asosiy_moment_s"),
+        sfx=d.get("sfx"),
     )
 
 
