@@ -14,3 +14,9 @@
 *.WEBM
 *.hevc
 *.HEVC
+
+# Montaj loyihalarining kesh va natija fayllari (ovoz, model natijalari, kadrlar, render)
+loyihalar/*/kesh/
+loyihalar/*/natija/
+__pycache__/
+.pytest_cache/

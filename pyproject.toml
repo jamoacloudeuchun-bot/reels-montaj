@@ -1,0 +1,9 @@
+[project]
+name = "montaj"
+version = "0.1.0"
+description = "Universal vertikal reels montaj tizimi (CLAUDE.md qoidalari asosida)"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["testlar"]
+markers = ["sekin: haqiqiy video va modellar bilan ishlaydigan integratsiya testi"]

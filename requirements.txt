@@ -1,0 +1,11 @@
+# Montaj tizimi kutubxonalari (bepul, mahalliy). Versiyalar sinovdan o'tganlari bilan qotirilgan.
+# PyTorch CPU: rasmiy pytorch serveri yopiq, PyPI dagi versiya ishlatiladi (CPU da ishlaydi).
+numpy==1.26.4
+pillow==13.0.0
+soundfile==0.14.0
+torch==2.15.0
+torchaudio==2.11.1
+deepfilternet==0.5.6        # torchaudio>=2.1 bilan moslik qatlami: montaj/ovoz.py
+faster-whisper==1.2.1       # model: Systran/faster-whisper-large-v3 (HuggingFace)
+pytest==9.2.0
+# Tizim dasturi: ffmpeg/ffprobe >= 6
