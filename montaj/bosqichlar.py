@@ -28,6 +28,8 @@ def _ovoz(lo, q, qayta):
 
 
 def ishga_tushir(buyruq, lo, qayta=False) -> dict:
+    if buyruq == "preview":
+        return _preview(lo, qayta)
     if not lo.video.exists():
         raise FileNotFoundError(f"video topilmadi: {lo.video}")
     q = _qabul(lo, qayta and buyruq in ("qabul", "tahlil"))
@@ -75,3 +77,13 @@ def hisobot(lo, n) -> str:
     if k.get("olib_tashlangan_oxir_s") is not None:
         s.append(f"- {k['olib_tashlangan_oxir_s']} s dan keyingi oxirgi ekran olib tashlanadi")
     return "\n".join(s) + "\n"
+
+
+def _preview(lo, qayta):
+    from .loyiha import uslub_yukla
+    from .preview import preview
+    m, k = lo.kesh / "matn.json", lo.kesh / "kesish.json"
+    if qayta or not (m.exists() and k.exists()):
+        ishga_tushir("tahlil", lo, qayta=qayta)
+    return preview(lo, uslub_yukla(lo.uslub_nomi), json.loads(m.read_text(encoding="utf-8")),
+                   json.loads(k.read_text(encoding="utf-8")))

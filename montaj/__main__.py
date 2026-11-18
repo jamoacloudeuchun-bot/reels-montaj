@@ -6,6 +6,7 @@
   matn      so'z vaqtlari va matn solishtiruvi (B2)
   kesish    kadr raqamli kesish rejasi (B2)
   tahlil    qabul + ovoz + matn + kesish ketma-ket (B2)
+  preview   3–4 ta namuna kadr + safe zona tekshiruvi (B3), render emas
 """
 import argparse
 import json
@@ -20,7 +21,7 @@ def _chop(d):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="montaj")
-    ap.add_argument("buyruq", choices=["tekshir", "qabul", "ovoz", "matn", "kesish", "tahlil"])
+    ap.add_argument("buyruq", choices=["tekshir", "qabul", "ovoz", "matn", "kesish", "tahlil", "preview"])
     ap.add_argument("loyiha")
     ap.add_argument("--qayta", action="store_true", help="keshni e'tiborsiz qoldirib qayta hisoblash")
     a = ap.parse_args(argv)

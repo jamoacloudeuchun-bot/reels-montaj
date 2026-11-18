@@ -2,15 +2,43 @@
   "nomi": "asosiy",
   "izoh": "Odatiy uslub: faqat CLAUDE.md qoidalari. Mavzu va brend elementlari yo'q.",
   "shrift": {
-    "sarlavha": { "fayl": "shriftlar/Oswald/Oswald-VariableFont_wght.ttf", "vazn": "Bold" },
-    "subtitr": { "fayl": "/usr/share/fonts/opentype/inter/Inter-Bold.otf", "vazn": null },
-    "izoh": { "fayl": "/usr/share/fonts/opentype/inter/Inter-SemiBold.otf", "vazn": null }
+    "sarlavha": {
+      "fayl": "shriftlar/Oswald/Oswald-VariableFont_wght.ttf",
+      "vazn": "Bold"
+    },
+    "subtitr": {
+      "fayl": "/usr/share/fonts/opentype/inter/Inter-Bold.otf",
+      "vazn": null
+    },
+    "izoh": {
+      "fayl": "/usr/share/fonts/opentype/inter/Inter-SemiBold.otf",
+      "vazn": null
+    }
   },
-  "olcham_px": { "sarlavha_max": 120, "subtitr": 60, "izoh": 44 },
-  "qator_oraligi": { "sarlavha": 1.08, "subtitr": 1.25 },
+  "olcham_px": {
+    "sarlavha_max": 120,
+    "subtitr": 60,
+    "izoh": 44
+  },
+  "eni_px": {
+    "sarlavha": 730,
+    "subtitr": 760
+  },
+  "subtitr_qator_max": 3,
+  "qator_oraligi": {
+    "sarlavha": 1.08,
+    "subtitr": 1.25
+  },
   "qoraytirish": {
     "pastki_gradient": true,
-    "sarlavha_ortida": { "kuch": 0.45, "pastgacha_px": 760 },
-    "subtitr_ortida": { "kuch": 0.55, "blur_px": 70 }
-  }
+    "sarlavha_ortida": {
+      "kuch": 0.45,
+      "pastgacha_px": 760
+    },
+    "subtitr_ortida": {
+      "kuch": 0.55,
+      "blur_px": 70
+    }
+  },
+  "izoh_eni": "sarlavha eni 730: pop 106 % da ham 780 px va safe zona ichida qoladi"
 }
