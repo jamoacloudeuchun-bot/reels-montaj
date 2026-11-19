@@ -1,0 +1,39 @@
+{
+  "nom": "harbiy_qollanma_andoza01",
+  "video": "/root/.claude/uploads/12690686-617d-535d-be6f-c9cf91badb6c/efdb0d6b-copy_29EEBBA6-5EE9-4A85-9F32-290196267350.mov",
+  "matn": "Agar siz ham harbiy oliy ta’lim muassasalariga kirish bo‘yicha qo‘llanmaga ega bo‘lishni istasangiz, kommentariyada “+” belgisini qoldiring. Biz sizga maxsus qo‘llanmani taqdim etamiz!",
+  "hook": "HARBIY OLIYGOHLARGA KIRISH QO‘LLANMASI",
+  "uslub": "andoza_01",
+  "til": "uz",
+  "soz_vaqtlari": [
+    {
+      "soz": "Biz",
+      "takror": 1,
+      "boshi": 7.58,
+      "izoh": "«qoldiring | Biz» chegarasi foydalanuvchi tomonidan quloq bilan tasdiqlangan"
+    }
+  ],
+  "grafikalar": [
+    {
+      "tur": "DoiraSahna",
+      "soz": "kommentariyada",
+      "oxiri_s": 7.58,
+      "yorliq": "kommentariyada",
+      "raqam": "+",
+      "izoh": "belgisini qoldiring",
+      "_izoh": "so'zlar gapdan: «kommentariyada “+” belgisini qoldiring»",
+      "joy": "yon",
+      "markaz_x": 790,
+      "markaz_y": 760
+    },
+    {
+      "tur": "LowerThird",
+      "soz": "Biz",
+      "oxiri_s": 9.0,
+      "yorliq": "biz sizga taqdim etamiz",
+      "matn": "maxsus qo‘llanma",
+      "ikonka": "hujjat",
+      "_izoh": "so'zlar gapdan: «Biz sizga maxsus qo‘llanmani taqdim etamiz!»"
+    }
+  ]
+}

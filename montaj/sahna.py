@@ -32,9 +32,14 @@ class Sahna:
     oraliqlar: list
 
     def qatlam(self, t):
+        """Barcha ko'rinadigan elementlar. "Bir so'z bir vaqtda bitta joyda": subtitrni yashiruvchi
+        grafika (masalan to'liq ekran sahna yoki kartochka) ko'rinib turganda subtitr chizilmaydi."""
         q = Image.new("RGBA", (KADR_ENI, KADR_BOYI), (0, 0, 0, 0))
+        yashir = any(getattr(e, "subtitrni_yashiradi", False) and e.korinadi(t) for e in self.elementlar)
         qutilar = []
         for e in self.elementlar:
+            if yashir and isinstance(e, Subtitr):
+                continue
             for b in e.chiz(t, q):
                 qutilar.append((e, b))
         return q, qutilar
@@ -66,7 +71,54 @@ def sahna_qur(lo, uslub, matn_n, kesish_n) -> Sahna:
         oxiri = dav if oxirgi else nat(b["oxiri"])
         # Chiqish fade faqat oxirgi subtitrda; ketma-ketlarida keskin almashuv (yangisi kirish animatsiyasi bilan)
         el.append(Subtitr(nat(b["boshi"]), oxiri, b["matn"], uslub, chiqish_s=0.2 if oxirgi else 0.0))
+    el += grafikalar_qur(getattr(lo, "grafikalar", None), uslub, matn_n["sozlar"], nat, dav)
     return Sahna(el, dav, fps, orl)
+
+
+def _komponentlar(uslub) -> dict:
+    """Yadro elementlari + uslub paketi komponentlari (uslublar/<nom>/<fayl>.py dagi KOMPONENTLAR)."""
+    from .grafika.elementlar import Kartochka, Royxat
+    k = {"Kartochka": Kartochka, "Royxat": Royxat}
+    fayl = uslub.get("komponentlar")
+    if fayl:
+        import importlib.util
+        from pathlib import Path
+        yol = Path(uslub["_papka"]) / fayl
+        spec = importlib.util.spec_from_file_location(f"uslub_{uslub['nomi']}_komponentlar", yol)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        k.update(mod.KOMPONENTLAR)
+    return k
+
+
+def grafikalar_qur(tavsif, uslub, sozlar, nat, dav):
+    """loyiha.json "grafikalar": [{"tur": ..., "boshi_s"/"soz": ..., "oxiri_s"/"davom_s": ..., ...}].
+
+    Vaqtlar MANBA videosi bo'yicha (soniya) yoki so'z bo'yicha ("soz", "takror"). Qolgan maydonlar
+    komponentga parametr bo'lib o'tadi. Matnlar faqat loyiha faylidan — avtomatik ko'chirilmaydi.
+    """
+    if not tavsif:
+        return []
+    from .matn import normal
+    komp = _komponentlar(uslub)
+    natija = []
+    for g in tavsif:
+        g = dict(g)
+        tur = g.pop("tur")
+        if tur not in komp:
+            raise ValueError(f"noma'lum grafika turi: {tur}. Mavjud: {', '.join(sorted(komp))}")
+        if "soz" in g:
+            soz, n = g.pop("soz"), g.pop("takror", 1)
+            mos = [s for s in sozlar if normal(s["soz"]) == normal(soz)]
+            if len(mos) < n:
+                raise ValueError(f"grafika uchun so'z topilmadi: {soz!r}")
+            boshi = nat(mos[n - 1]["boshi"])
+        else:
+            boshi = nat(g.pop("boshi_s"))
+        oxiri = nat(g.pop("oxiri_s")) if "oxiri_s" in g else min(dav, boshi + g.pop("davom_s", 2.5))
+        g.pop("_izoh", None)                                   # loyiha fayli uchun izoh (komponentga o'tmaydi)
+        natija.append(komp[tur](boshi, oxiri, uslub=uslub, **g))
+    return natija
 
 
 def safe_tekshir(sahna: Sahna, qadam_s: float = 1 / 30):

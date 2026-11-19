@@ -1,0 +1,78 @@
+{
+  "nom": "namuna_andoza_01",
+  "video": "/home/user/reels-montaj/loyihalar/namuna_andoza_01/kesh/sintetik.mp4",
+  "matn": "Bu sintetik sinov videosi. Uslub komponentlari tekshirilmoqda: raqam, ro‘yxat, kartochka va sana. Barcha matnlar namuna uchun yozilgan.",
+  "hook": null,
+  "uslub": "andoza_01",
+  "til": "uz",
+  "grafikalar": [
+    {
+      "tur": "RaqamSahna",
+      "boshi_s": 0.6,
+      "oxiri_s": 3.8,
+      "yorliq": "1-komponent",
+      "sarlavha": "RAQAM VA SHKALA",
+      "raqam": "4–7",
+      "birlik": "qadam",
+      "shkala": [
+        1,
+        10
+      ],
+      "qiymat": [
+        4,
+        7
+      ]
+    },
+    {
+      "tur": "LowerThird",
+      "boshi_s": 4.3,
+      "oxiri_s": 6.6,
+      "yorliq": "2-komponent",
+      "matn": "Kartochka",
+      "ikonka": "odam"
+    },
+    {
+      "tur": "ChecklistSahna",
+      "boshi_s": 7.0,
+      "oxiri_s": 10.8,
+      "yorliq": "3-komponent",
+      "sarlavha": "RO‘YXAT",
+      "bandlar": [
+        "Birinchi band",
+        "Ikkinchi band",
+        "Uchinchi band"
+      ],
+      "belgilangan": [
+        0,
+        1
+      ]
+    },
+    {
+      "tur": "SanaSahna",
+      "boshi_s": 11.2,
+      "oxiri_s": 13.8,
+      "yorliq": "4-komponent",
+      "sarlavha": "SANA KARTOCHKALARI",
+      "sanalar": [
+        {
+          "oy": "yanvar",
+          "kun": "12",
+          "izoh": "boshlanish"
+        },
+        {
+          "oy": "fevral",
+          "kun": "28",
+          "izoh": "tugash"
+        }
+      ]
+    },
+    {
+      "tur": "DoiraSahna",
+      "boshi_s": 14.0,
+      "oxiri_s": 15.8,
+      "yorliq": "5-komponent",
+      "raqam": "5",
+      "izoh": "doira"
+    }
+  ]
+}

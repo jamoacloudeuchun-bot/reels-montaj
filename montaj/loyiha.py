@@ -43,6 +43,7 @@ class Loyiha:
     musiqa: dict | None = None
     asosiy_moment_s: float | None = None
     sfx: list | None = None
+    grafikalar: list | None = None
 
     @property
     def kesh(self) -> Path:
@@ -81,6 +82,7 @@ def loyiha_yukla(yol) -> Loyiha:
         musiqa=d.get("musiqa"),
         asosiy_moment_s=d.get("asosiy_moment_s"),
         sfx=d.get("sfx"),
+        grafikalar=d.get("grafikalar"),
     )
 
 

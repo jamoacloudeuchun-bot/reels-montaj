@@ -123,6 +123,17 @@ def _kadr_yuv(fayl, n, y0, y1):
     return np.frombuffer(r.stdout, np.uint8).reshape(3, y1 - y0, W).astype(float)
 
 
+def _grafikasiz_kadr(sahna, y1, jami, f):
+    """Yuqori zonada (0..y1) grafika qatlami bo'sh bo'lgan birinchi kadr (0.25 s qadam, 1 s dan keyin)."""
+    t = min(1.0, jami / f / 2)
+    while t < jami / f:
+        q, _ = sahna.qatlam(t)
+        if np.asarray(q)[:y1, :, 3].max() == 0:
+            return int(t * f)
+        t += 0.25
+    return None
+
+
 def tekshir(lo, sahna, chiqish) -> dict:
     """Format, kadr soni, davomiylik, LUFS/peak, rang (grafika yo'q joyda manba bilan) va A/V uzunligi."""
     d = _probe(chiqish)
@@ -131,14 +142,15 @@ def tekshir(lo, sahna, chiqish) -> dict:
     f = float(fps_qiymat(sahna.fps))
     kutilgan = sum(b - a_ for a_, b in sahna.oraliqlar)
     i, tp = _ebur(chiqish)
-    # rang: grafika qatlami bo'sh bo'lgan yuqori zona (hook tugagach, pastki gradient boshlanmasdan)
+    # rang: grafika qatlami UMUMAN bo'sh bo'lgan kadr va zona (pastki gradient boshlanmasdan yuqorida)
     y1 = int(H * (1 - QOIDALAR.th.qoraytirish_balandlik)) - 10
-    hook_oxiri = max((e.oxiri for e in sahna.elementlar if type(e).__name__ == "Hook"), default=0)
-    n = min(kutilgan - 1, int((hook_oxiri + 1.0) * f))
-    manba_n = list(_manba_kadrlari(sahna))[n]
-    m, r = _kadr_yuv(lo.video, manba_n, 0, y1), _kadr_yuv(chiqish, n, 0, y1)
-    rang = {c: round(float(np.abs(m[k] - r[k]).mean()), 2) for k, c in enumerate("YUV")}       # siqish shovqini ham kiradi
-    siljish = {c: round(float(r[k].mean() - m[k].mean()), 2) for k, c in enumerate("YUV")}   # tizimli rang siljishi
+    n = _grafikasiz_kadr(sahna, y1, kutilgan, f)
+    rang = siljish = None
+    if n is not None:
+        manba_n = list(_manba_kadrlari(sahna))[n]
+        m, r = _kadr_yuv(lo.video, manba_n, 0, y1), _kadr_yuv(chiqish, n, 0, y1)
+        rang = {c: round(float(np.abs(m[k] - r[k]).mean()), 2) for k, c in enumerate("YUV")}   # siqish shovqini ham kiradi
+        siljish = {c: round(float(r[k].mean() - m[k].mean()), 2) for k, c in enumerate("YUV")}  # tizimli rang siljishi
     natija = {
         "fayl": str(chiqish), "kodek": v["codec_name"], "olcham": f"{v['width']}x{v['height']}",
         "fps": v["r_frame_rate"], "kadrlar": int(v.get("nb_frames", 0)), "kutilgan_kadrlar": kutilgan,
@@ -157,7 +169,9 @@ def tekshir(lo, sahna, chiqish) -> dict:
         xato.append(f"LUFS {i} (kutilgan {QOIDALAR.ovoz.yakuniy_lufs} ±1)")
     if tp is not None and tp > -1.0:
         xato.append(f"peak {tp} dBFS > -1")
-    if max(abs(v) for v in siljish.values()) > RANG_SILJISH_MAX:
+    if siljish is None:
+        natija["ogohlantirish"] = "rang tekshiruvi uchun grafikasiz kadr topilmadi"
+    elif max(abs(v) for v in siljish.values()) > RANG_SILJISH_MAX:
         xato.append(f"rang siljishi (o'rtacha qiymat farqi) katta: {siljish}")
     if natija["rang_tizimi"] != ["bt709", "bt709", "bt709"]:
         xato.append(f"rang tizimi bt709 emas: {natija['rang_tizimi']}")

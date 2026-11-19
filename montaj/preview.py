@@ -21,15 +21,21 @@ def manba_kadr(video, kadr, fps) -> Image.Image:
 
 
 def vaqtlarni_tanla(sahna, n=4):
-    """Hook (pop tugagach) va subtitr bo'laklarining o'rtasi."""
-    t = []
+    """Hook (pop tugagach), grafika komponentlari (animatsiya tugagan payt) va subtitrlar o'rtasi.
+
+    Grafika bo'lsa, ular birinchi navbatda ko'rsatiladi; joy qolsa — subtitrlar.
+    """
+    hook, graf, sub = [], [], []
     for e in sahna.elementlar:
         nom = type(e).__name__
         if nom == "Hook":
-            t.append(min(e.boshi + 0.8, (e.boshi + e.oxiri) / 2))
+            hook.append(min(e.boshi + 0.8, (e.boshi + e.oxiri) / 2))
         elif nom == "Subtitr":
-            t.append((e.boshi + e.oxiri) / 2)
-    return [round(x, 3) for x in t[:n]]
+            sub.append((e.boshi + e.oxiri) / 2)
+        elif nom != "PastkiGradient":
+            graf.append(min(e.boshi + getattr(e, "toliq_korinish_s", 1.4), (e.boshi + e.oxiri) / 2 + 0.3, e.oxiri - 0.3))
+    t = (hook + graf + sub)[:n]
+    return sorted(round(x, 3) for x in t)
 
 
 def safe_ramka(png_yol, chiqish):

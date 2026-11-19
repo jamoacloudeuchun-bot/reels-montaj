@@ -1,0 +1,58 @@
+{
+  "nomi": "andoza_01",
+  "izoh": "REFERENCES/Andoza_01 tuzilishi asosidagi uslub paketi, CLAUDE.md ga moslashtirilgan: barcha matn oq, oltin faqat grafik/ikonka/check, soya va blur yo'q, tracking 0–20, kamera rangi o'zgarmaydi. Andoza matnlari va brendlari ko'chirilmagan.",
+  "manba": "REFERENCES/Andoza_01/uslub.json (faqat o'qiladi, o'zgartirilmaydi)",
+  "komponentlar": "komponentlar.py",
+  "shrift": {
+    "sarlavha": { "fayl": "shriftlar/Oswald/Oswald-VariableFont_wght.ttf", "vazn": "Bold" },
+    "yorliq": { "fayl": "shriftlar/Oswald/Oswald-VariableFont_wght.ttf", "vazn": "Medium" },
+    "raqam": { "fayl": "shriftlar/Oswald/Oswald-VariableFont_wght.ttf", "vazn": "Bold" },
+    "band": { "fayl": "shriftlar/Oswald/Oswald-VariableFont_wght.ttf", "vazn": "Medium" },
+    "subtitr": { "fayl": "/usr/share/fonts/opentype/inter/Inter-Bold.otf", "vazn": null },
+    "izoh": { "fayl": "/usr/share/fonts/opentype/inter/Inter-SemiBold.otf", "vazn": null }
+  },
+  "olcham_px": { "sarlavha_max": 112, "subtitr": 60, "izoh": 44, "yorliq": 44, "raqam_max": 260, "band": 54, "lower_third": 76 },
+  "eni_px": { "sarlavha": 730, "subtitr": 760 },
+  "subtitr_qator_max": 3,
+  "qator_oraligi": { "sarlavha": 1.06, "subtitr": 1.25 },
+  "tracking": { "yorliq": 6, "sarlavha": 0 },
+  "qoraytirish": {
+    "pastki_gradient": true,
+    "sarlavha_ortida": { "kuch": 0.45, "pastgacha_px": 760 },
+    "subtitr_ortida": { "kuch": 0.55, "blur_px": 70 }
+  },
+  "andoza": {
+    "ranglar": {
+      "fon_tepa": "#0F1E3D",
+      "fon_past": "#0A1630",
+      "karta": "#212E4B",
+      "karta_alfa": 0.92,
+      "lower_third": "#070E24",
+      "lower_third_alfa": 0.94,
+      "oltin": "#E6AD49",
+      "ikonka_chiziq": "#070E24",
+      "bezak_chiziq_alfa": 0.07
+    },
+    "joylashuv": {
+      "yorliq_y": 330,
+      "sarlavha_y": 430,
+      "kontent_boshi_y": 600,
+      "karta_x": [174, 906],
+      "lower_third_x": [105, 905],
+      "lower_third_y": 1265,
+      "lower_third_balandlik": 220,
+      "ikonka_px": 120,
+      "radius": 24,
+      "band_balandlik": 128,
+      "band_oraligi": 22
+    },
+    "vaqt": {
+      "kirish": "pop",
+      "kontent_kechikish_s": 0.15,
+      "band_oraligi_s": 0.25,
+      "check_kechikish_s": 0.18,
+      "doira_chizish_s": 0.5,
+      "shkala_s": 0.6
+    }
+  }
+}
