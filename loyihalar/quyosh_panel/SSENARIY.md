@@ -28,3 +28,7 @@ peshonada qora ko'zoynak, ko'kragida ko'k panel nishoni, oq qo'lqop, ko'k krosso
   1 qo'l silkitish, 2 pastga ko'rsatish, 3 ko'z qisish, 4 ko'zoynak (XATO: ikki juft ko'zoynak), 5 xursand sakrash, 6 o'ylanish.
 - Yetishmaydi: "hayron" pozasi. 4-poza qayta yasalishi kerak.
 - Kesish: `python stiker_kes.py <rasm> <papka> personaj --setka 3x2`.
+
+## Qarorlar
+- Videoda hech qanday yozuv va raqam yo'q (foydalanuvchi qarori). `sinov_kadrlar.py` da MATN = False.
+- Ovoz: AI (TTS). Matn: `OVOZ_MATNI.txt` (raqamlar so'z bilan).

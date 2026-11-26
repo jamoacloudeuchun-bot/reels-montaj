@@ -9,6 +9,7 @@ ST2 = Path("kesh/stiker_v2")
 SHRIFT = "/home/user/reels-montaj/shriftlar/Oswald/Oswald-VariableFont_wght.ttf"
 W, H = 1080, 1920
 OQ = (255, 255, 255)
+MATN = False  # foydalanuvchi: videoda hech qanday yozuv va raqam bo'lmasin
 
 
 def fon(qaysi):
@@ -39,6 +40,8 @@ def shrift(o, wght=700):
 
 def matn_karta(kadr, matn, cy, o=84, cx=W // 2, maks=760):
     """Oq matn, orqasida yarim shaffof to'q karta (soya yo'q)."""
+    if not MATN:
+        return
     d0 = ImageDraw.Draw(kadr)
     f = shrift(o)
     l, t, r, b = d0.textbbox((0, 0), matn, font=f)
