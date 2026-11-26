@@ -5,7 +5,7 @@
 - personaj rejimi: dizayndagi oq konturni saqlaydi, faqat tashqi kulrang chiziqni (1–2 px) oladi.
 Ikkalasida: mayda qoldiq bo'laklar o'chiriladi, alfa cheti 1 px yumshatiladi (zinapoya yo'q).
 
-Ishlatish: python stiker_tozala.py buyum|personaj kirish_papka chiqish_papka
+Ishlatish: python stiker_tozala.py buyum|personaj kirish_papka chiqish_papka [min_ulush=0.02]
 """
 import sys
 from pathlib import Path
@@ -26,7 +26,7 @@ def _toldir_dan(boshlang, ruxsat):
         m = n
 
 
-def tozala(im, rejim):
+def tozala(im, rejim, min_ulush=0.02):
     im = im.convert("RGBA")
     pad = 4
     a = np.asarray(im).astype(int)
@@ -41,12 +41,13 @@ def tozala(im, rejim):
         och = (mn >= 150) & (mn <= 246) & (mx - mn <= 16)  # faqat kulrang chiziq, oq kontur qoladi
     fon = _toldir_dan(_kengay(shaffof, 1), shaffof | och)
     obyekt = ~fon
-    # mayda qoldiqlarni o'chirish: eng katta komponentga nisbatan 2% dan kichiklar
+    # mayda qoldiqlarni o'chirish: eng katta komponentga nisbatan min_ulush dan kichiklar
+    # (masalan, sakrash chiziqlari; qalam atrofidagi uchqunlar kabi kerakli bo'laklar uchun kichikroq qiymat)
     belgi, komp = komponentlar(obyekt, min_maydon=1)
     if komp:
         eng = max(k[5] for k in komp)
         for k in komp:
-            if k[5] < 0.02 * eng:
+            if k[5] < min_ulush * eng:
                 obyekt[belgi == k[4]] = False
     alfa = Image.fromarray((obyekt * 255).astype(np.uint8))
     alfa = alfa.filter(ImageFilter.MinFilter(5 if rejim == "buyum" else 3)).filter(ImageFilter.GaussianBlur(0.8))
@@ -59,8 +60,9 @@ def tozala(im, rejim):
 
 if __name__ == "__main__":
     rejim, kir, chiq = sys.argv[1], Path(sys.argv[2]), Path(sys.argv[3])
+    min_ulush = float(sys.argv[4]) if len(sys.argv) > 4 else 0.02
     chiq.mkdir(parents=True, exist_ok=True)
     for f in sorted(kir.glob("*.png")):
-        r = tozala(Image.open(f), rejim)
+        r = tozala(Image.open(f), rejim, min_ulush)
         r.save(chiq / f.name)
         print(f.name, Image.open(f).size, "->", r.size)
