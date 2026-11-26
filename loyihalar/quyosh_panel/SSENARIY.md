@@ -42,3 +42,8 @@ peshonada qora ko'zoynak, ko'kragida ko'k panel nishoni, oq qo'lqop, ko'k krosso
 - Carefree (ukulele) — drop 50.0 s -> 7.1 s ga; Chipper Doodle v2 — 25.0 s; Super Friendly — 13.0 s.
 - Kredit matni: "<Trek nomi>" Kevin MacLeod (incompetech.com) / Licensed under Creative Commons: By Attribution 4.0 / http://creativecommons.org/licenses/by/4.0/
 - Preview: `musiqa_sinov.py` (musiqa -21 LUFS, ducking -6 dB, yakuniy ~-14.6 LUFS, TP -1.5).
+
+## Tanlov: Carefree + SFX
+- Musiqa -25 LUFS (foydalanuvchi: musiqani pasaytirish), ducking -6 dB.
+- SFX: BigSoundBank (CC0, haqiqiy yozuvlar) — 1074 Bubbles Burst (pop), 1797/1798 Whoosh, 0466 Meinl wood block (hit). `sfx_ajrat.py` bilan kesildi.
+- Vaqt chizig'i: `vaqt_chizigi.json` (25 hodisa, gap vaqtlari RMS bo'yicha taxmin).
