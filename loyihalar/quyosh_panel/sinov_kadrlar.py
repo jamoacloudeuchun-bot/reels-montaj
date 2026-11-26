@@ -5,6 +5,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 ASL = Image.open("asl/chatgpt_v1_umumiy.png").convert("RGB")
 ST = Path("kesh/stiker")
+ST2 = Path("kesh/stiker_v2")
 SHRIFT = "/home/user/reels-montaj/shriftlar/Oswald/Oswald-VariableFont_wght.ttf"
 W, H = 1080, 1920
 OQ = (255, 255, 255)
@@ -20,7 +21,8 @@ def fon(qaysi):
 
 
 def stiker(kadr, nom, cx, cy, balandlik):
-    s = Image.open(ST / f"{nom}.png")
+    # personaj: v2 (yuqori sifatli varaq), buyumlar: hozircha v1
+    s = Image.open((ST2 if nom.startswith("personaj") else ST) / f"{nom}.png")
     k = balandlik / s.height
     s = s.resize((round(s.width * k), balandlik), Image.LANCZOS)
     kadr.paste(s, (cx - s.width // 2, cy - s.height // 2), s)
