@@ -2,176 +2,176 @@
  {
   "matn": "Bir soatlik ovozli",
   "a": 0.05,
-  "b": 1.18
+  "b": 1.251
  },
  {
   "matn": "yozuvni qo‘lda matnga",
-  "a": 1.18,
-  "b": 2.35
+  "a": 1.251,
+  "b": 2.5
  },
  {
   "matn": "ko‘chirasizmi?",
-  "a": 2.35,
-  "b": 3.325
+  "a": 2.5,
+  "b": 3.525
  },
  {
   "matn": "Bu soatlab vaqt",
-  "a": 3.325,
-  "b": 4.55
+  "a": 3.525,
+  "b": 4.825
  },
  {
   "matn": "oladi!",
-  "a": 4.55,
-  "b": 5.125
+  "a": 4.825,
+  "b": 5.25
  },
  {
   "matn": "Salom",
-  "a": 5.125,
-  "b": 5.55
+  "a": 5.45,
+  "b": 5.875
  },
  {
   "matn": "men Smartbek!",
-  "a": 5.55,
-  "b": 6.3
+  "a": 5.875,
+  "b": 6.675
  },
  {
   "matn": "SmartUzbek botini sinab",
-  "a": 6.3,
-  "b": 7.8
+  "a": 6.675,
+  "b": 8.275
  },
  {
   "matn": "ko‘rish uchun uchta",
-  "a": 7.8,
-  "b": 8.7
- },
- {
-  "matn": "sabab.",
-  "a": 8.7,
+  "a": 8.275,
   "b": 9.225
  },
  {
-  "matn": "Birinchi",
+  "matn": "sabab.",
   "a": 9.225,
-  "b": 9.775
+  "b": 9.8
+ },
+ {
+  "matn": "Birinchi",
+  "a": 9.8,
+  "b": 10.375
  },
  {
   "matn": "ovozli xabarni botga",
-  "a": 9.775,
-  "b": 10.75
+  "a": 10.375,
+  "b": 11.4
  },
  {
   "matn": "yuborasiz",
-  "a": 10.75,
-  "b": 11.55
+  "a": 11.4,
+  "b": 12.225
  },
  {
   "matn": "u matnga aylanadi.",
-  "a": 11.55,
-  "b": 12.55
+  "a": 12.225,
+  "b": 13.3
  },
  {
   "matn": "Talaba",
-  "a": 12.55,
-  "b": 13.14
+  "a": 13.3,
+  "b": 13.928
  },
  {
   "matn": "jurnalist",
-  "a": 13.14,
-  "b": 13.925
+  "a": 13.928,
+  "b": 14.775
  },
  {
   "matn": "bloger hammaga qulay.",
-  "a": 13.925,
-  "b": 15.475
+  "a": 14.775,
+  "b": 16.425
  },
  {
   "matn": "Ikkinchi",
-  "a": 15.475,
-  "b": 15.95
+  "a": 16.425,
+  "b": 16.7
  },
  {
   "matn": "matningizdagi imlo xatolarini",
-  "a": 15.95,
-  "b": 17.575
+  "a": 16.7,
+  "b": 18.65
  },
  {
   "matn": "tuzatib beradi.",
-  "a": 17.575,
-  "b": 18.3
+  "a": 18.65,
+  "b": 19.4
  },
  {
   "matn": "Endi xato bilan",
-  "a": 18.3,
-  "b": 19.1
+  "a": 19.4,
+  "b": 20.246
  },
  {
   "matn": "yuborishdan uyalmaysiz.",
-  "a": 19.1,
-  "b": 20.6
+  "a": 20.246,
+  "b": 21.582
  },
  {
   "matn": "Uchinchi",
-  "a": 20.6,
-  "b": 21.125
+  "a": 21.582,
+  "b": 22.4
  },
  {
   "matn": "eski yozuvdagi matnni",
-  "a": 21.125,
-  "b": 22.125
+  "a": 22.4,
+  "b": 23.475
  },
  {
   "matn": "yangi yozuvga o‘tkazadi.",
-  "a": 22.125,
-  "b": 23.875
+  "a": 23.475,
+  "b": 25.15
  },
  {
   "matn": "Yangi harflar bilan.",
-  "a": 23.875,
-  "b": 25.1
+  "a": 25.15,
+  "b": 26.625
  },
  {
   "matn": "Hammasi bitta Telegram",
-  "a": 25.1,
-  "b": 26.34
+  "a": 26.625,
+  "b": 27.92
  },
  {
   "matn": "botda va hozircha",
-  "a": 26.34,
-  "b": 27.45
+  "a": 27.92,
+  "b": 29.075
  },
  {
   "matn": "bepul!",
-  "a": 27.45,
-  "b": 27.9
+  "a": 29.075,
+  "b": 29.575
  },
  {
   "matn": "Profildagi havola orqali",
-  "a": 27.9,
-  "b": 29.375
+  "a": 29.575,
+  "b": 31.15
  },
  {
   "matn": "botga kiring va",
-  "a": 29.375,
-  "b": 30.275
+  "a": 31.15,
+  "b": 32.1
  },
  {
   "matn": "sinab ko‘ring.",
-  "a": 30.275,
-  "b": 31.225
+  "a": 32.1,
+  "b": 32.725
  },
  {
   "matn": "Foydali bo‘lsa",
-  "a": 31.225,
-  "b": 31.975
+  "a": 32.725,
+  "b": 33.875
  },
  {
   "matn": "kanalga obuna bo‘ling",
-  "a": 31.975,
-  "b": 32.903
+  "a": 33.875,
+  "b": 34.877
  },
  {
   "matn": "va do‘stingizga yuboring!",
-  "a": 32.903,
-  "b": 34.374
+  "a": 34.877,
+  "b": 36.419
  }
 ]

@@ -1,113 +1,113 @@
 {
- "izoh": "SmartUzbek 01: Whisper so'z vaqtlari bo'yicha; SFX faqat grafikaga.",
+ "izoh": "SmartUzbek 01: Whisper so'z vaqtlari bo'yicha; SFX faqat grafikaga. (asl tezlik: 1.06 versiya vaqtlari x1.06)",
  "hodisalar": [
   {
-   "t": 0.15,
+   "t": 0.159,
    "grafika": "buyum: qum soat",
    "sfx": "pop_4"
   },
   {
-   "t": 0.75,
+   "t": 0.795,
    "grafika": "ovozli xabar",
    "sfx": "pop_1"
   },
   {
-   "t": 2.15,
+   "t": 2.279,
    "grafika": "hujjat",
    "sfx": "pop_3"
   },
   {
-   "t": 4.85,
+   "t": 5.141,
    "grafika": "o'tish",
    "sfx": "whoosh_1798"
   },
   {
-   "t": 6.24,
+   "t": 6.614,
    "grafika": "logo",
    "sfx": "pop_2"
   },
   {
-   "t": 8.22,
+   "t": 8.713,
    "grafika": "ikonka",
    "sfx": "pop_1"
   },
   {
-   "t": 8.45,
+   "t": 8.957,
    "grafika": "ikonka",
    "sfx": "pop_3"
   },
   {
-   "t": 8.68,
+   "t": 9.201,
    "grafika": "ikonka",
    "sfx": "pop_5"
   },
   {
-   "t": 9.05,
+   "t": 9.593,
    "grafika": "o'tish: telefon",
    "sfx": "whoosh_1798"
   },
   {
-   "t": 10.74,
+   "t": 11.384,
    "grafika": "xabar telefonga uchadi",
    "sfx": "whoosh_1797"
   },
   {
-   "t": 11.54,
+   "t": 12.232,
    "grafika": "hujjat chiqadi",
    "sfx": "pop_6"
   },
   {
-   "t": 15.25,
+   "t": 16.165,
    "grafika": "o'tish: hujjat",
    "sfx": "whoosh_1798"
   },
   {
-   "t": 17.3,
+   "t": 18.338,
    "grafika": "qalam o'tadi",
    "sfx": "whoosh_1797"
   },
   {
-   "t": 17.78,
+   "t": 18.847,
    "grafika": "yashil belgi",
    "sfx": "pop_2"
   },
   {
-   "t": 20.25,
+   "t": 21.465,
    "grafika": "o'tish",
    "sfx": "whoosh_1798"
   },
   {
-   "t": 21.0,
+   "t": 22.26,
    "grafika": "eski harflar",
    "sfx": "pop_1"
   },
   {
-   "t": 22.3,
+   "t": 23.638,
    "grafika": "yangi harflar",
    "sfx": "pop_3"
   },
   {
-   "t": 22.6,
+   "t": 23.956,
    "grafika": "yangi harflar",
    "sfx": "pop_5"
   },
   {
-   "t": 24.85,
+   "t": 26.341,
    "grafika": "o'tish: sovg'a",
    "sfx": "whoosh_1798"
   },
   {
-   "t": 27.52,
+   "t": 29.171,
    "grafika": "sovg'a: bepul",
    "sfx": "hit_3"
   },
   {
-   "t": 27.9,
+   "t": 29.574,
    "grafika": "o'tish: CTA",
    "sfx": "whoosh_1798"
   },
   {
-   "t": 28.05,
+   "t": 29.733,
    "grafika": "telefon + logo",
    "sfx": "pop_2"
   }

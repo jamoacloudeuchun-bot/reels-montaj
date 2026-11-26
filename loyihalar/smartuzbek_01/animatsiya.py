@@ -28,7 +28,7 @@ from lab_sinov import vizem_chizigi  # noqa: E402
 S = 2
 W, H, FPS = 1080 * S, 1920 * S, 60
 OVOZ = "kesh/ovoz/ovoz_final.wav"
-DAVOMIYLIK = 34.95
+DAVOMIYLIK = 37.00   # ovoz 36.29 s (asl tezlik) + 0.7 s
 SHRIFT_SUB = "/home/user/reels-montaj/shriftlar/Oswald/Oswald-VariableFont_wght.ttf"
 SHRIFT_HARF = "/usr/share/fonts/opentype/inter/Inter-Bold.otf"
 KOK, SARIQ, OQ = (2, 43, 122, 255), (253, 192, 5, 255), (255, 255, 255, 255)
@@ -77,6 +77,18 @@ ELEMENTLAR = [
     # 7 — CTA: telefon ekranida logo
     E(7, "telefon_logo", 28.05, 540, 600, 390),
 ]
+
+
+# Vaqtlar 1.06 tezlikdagi ovoz bo'yicha yozilgan; asl tezlikdagi ovoz uchun chiziqli kattalashtiriladi.
+VAQT_K = 1.06
+SAHNALAR = [(round(a * VAQT_K, 3), round(b * VAQT_K, 3) if b < 34.9 else DAVOMIYLIK) for a, b in SAHNALAR]
+POZALAR = [(round(t * VAQT_K, 3), p) for t, p in POZALAR]
+for _e in ELEMENTLAR:
+    _e["t0"] = round(_e["t0"] * VAQT_K, 3)
+    if "yoqol" in _e:
+        _e["yoqol"] = round(_e["yoqol"] * VAQT_K, 3)
+    if "urg" in _e:
+        _e["urg"] = [round(u * VAQT_K, 3) for u in _e["urg"]]
 
 
 # ---------------- yordamchilar ----------------
