@@ -47,3 +47,8 @@ peshonada qora ko'zoynak, ko'kragida ko'k panel nishoni, oq qo'lqop, ko'k krosso
 - Musiqa -25 LUFS (foydalanuvchi: musiqani pasaytirish), ducking -6 dB.
 - SFX: BigSoundBank (CC0, haqiqiy yozuvlar) — 1074 Bubbles Burst (pop), 1797/1798 Whoosh, 0466 Meinl wood block (hit). `sfx_ajrat.py` bilan kesildi.
 - Vaqt chizig'i: `vaqt_chizigi.json` (25 hodisa, gap vaqtlari RMS bo'yicha taxmin).
+
+## v2 (musiqasiz)
+- Foydalanuvchi qarori: Carefree olib tashlandi. Ovoz + 25 SFX, -14.2 LUFS, TP -1.7.
+- `python musiqa_sinov.py kesh/ovoz/ovoz_final.wav - 0 kesh/miks/musiqasiz_sfx.wav 7.1 vaqt_chizigi.json`
+- Natija: natija/quyosh_panel_reels_v2_musiqasiz.mp4 (gitda yo'q).

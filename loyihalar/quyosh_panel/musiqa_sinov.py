@@ -2,7 +2,7 @@
 
 Montaj yadrosidagi qoidalar: musiqa -21 LUFS (bu loyihada -25, foydalanuvchi so'rovi), nutq ostida ducking (-6 dB), yakuniy -14 LUFS, TP -1.5.
 Trekdagi drop asosiy momentga (\"uchta sabab\", ~7.1 s) to'g'rilanadi.
-Ishlatish: python musiqa_sinov.py ovoz.wav musiqa.mp3 drop_s chiqish.wav [moment_s] [vaqt_chizigi.json]
+Ishlatish: python musiqa_sinov.py ovoz.wav musiqa.mp3|- drop_s chiqish.wav [moment_s] [vaqt_chizigi.json]
 """
 import sys
 
@@ -32,15 +32,19 @@ def aralashtir(ovoz_f, musiqa_f, drop_s, chiqish, moment_s=7.1, vaqt_chizigi=Non
     v = _oqi(ovoz_f, SR)
     n = len(v) + int(DUM_S * SR)
     v = np.pad(v, (0, n - len(v)))
-    m = _oqi(musiqa_f, SR)
-    boshi = max(0.0, drop_s - moment_s)
-    m = m[int(boshi * SR):int(boshi * SR) + n]
-    m = np.pad(m, (0, n - len(m)))
-    m *= 10 ** ((MUSIQA_LUFS - lufs(m, SR)) / 20)
     mk = nutq_maskasi(v, SR)
-    m *= 10 ** (DUCK_DB * mk / 20)
-    fi, fo = int(0.3 * SR), int(1.5 * SR)
-    m[:fi] *= np.linspace(0, 1, fi); m[-fo:] *= np.linspace(1, 0, fo)
+    boshi = None
+    if musiqa_f == "-":                    # musiqasiz variant (foydalanuvchi qarori)
+        m = np.zeros(n, np.float32)
+    else:
+        m = _oqi(musiqa_f, SR)
+        boshi = max(0.0, drop_s - moment_s)
+        m = m[int(boshi * SR):int(boshi * SR) + n]
+        m = np.pad(m, (0, n - len(m)))
+        m *= 10 ** ((MUSIQA_LUFS - lufs(m, SR)) / 20)
+        m *= 10 ** (DUCK_DB * mk / 20)
+        fi, fo = int(0.3 * SR), int(1.5 * SR)
+        m[:fi] *= np.linspace(0, 1, fi); m[-fo:] *= np.linspace(1, 0, fo)
     x = v + m
     sfx_soni = 0
     if vaqt_chizigi:
@@ -53,7 +57,7 @@ def aralashtir(ovoz_f, musiqa_f, drop_s, chiqish, moment_s=7.1, vaqt_chizigi=Non
             sfx_soni += 1
     info = normallashtir(x, SR, chiqish)
     info["sfx"] = sfx_soni
-    info.update(musiqa_boshi_s=round(boshi, 2), davomiylik_s=round(n / SR, 2))
+    info.update(musiqa_boshi_s=None if boshi is None else round(boshi, 2), davomiylik_s=round(n / SR, 2))
     return info
 
 
