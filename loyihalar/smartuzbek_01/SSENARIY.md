@@ -16,3 +16,8 @@ Maqsad: botga foydalanuvchi + kanalga obunachi. Format: Quyosh paneli loyihasida
 ## Tekshirish kerak (PDF "Muhim qoida")
 - Imlo tuzatish va eski -> yangi yozuv funksiyalari botda amalda tekshirilsin, keyin e'lon qilinsin.
 - Bot havolasi / username va SmartUzbek logotipi fayli kerak.
+
+## Personaj: jurnalist (tanlangan)
+- asl/jurnalist_pozalar.png -> stikerlar/poza/poza_1..6 (salom, pastga ko'rsatish, bosh barmoq, o'ylash, sakrash, ikki qo'l ochiq).
+- yuz_top.py -> yuz.json (har pozada og'iz va ko'z joyi, avtomatik).
+- gapir.py: og'iz vizemlari (X, M, kichik, A, E, O) + ko'z qirpish; lab_sinov.vizem_chizigi ovoz+Whisper bo'yicha.
