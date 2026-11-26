@@ -50,3 +50,6 @@
 - Kirish: pop 80→106→100% (0.2–0.34 s), matn pastdan ~36 px ko'tarilib 0.2 s fade. Chiqish 0.2–0.3 s fade.
 - Zoom zarbasi faqat ta'kid so'zda (100→109–111%, 0.3 s kirish, 0.35 s chiqish), tovushsiz.
 - Shape layer'da blur/soya ishlatma (chetidan kesiladi). Nur kerak bo'lsa: butun kadrli solid + radial Ramp + Screen.
+
+## Loyiha uslublari
+- SmartUzbek videolari: tasdiqlangan uslub va ish tartibi — `uslublar/smartuzbek/USLUB.md` (har yangi SmartUzbek videosida shunga amal qil).
