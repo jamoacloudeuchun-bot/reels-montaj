@@ -32,3 +32,13 @@ peshonada qora ko'zoynak, ko'kragida ko'k panel nishoni, oq qo'lqop, ko'k krosso
 ## Qarorlar
 - Videoda hech qanday yozuv va raqam yo'q (foydalanuvchi qarori). `sinov_kadrlar.py` da MATN = False.
 - Ovoz: AI (TTS). Matn: `OVOZ_MATNI.txt` (raqamlar so'z bilan).
+
+## Ovoz (tanlandi: 2-variant)
+- `asl/ovoz_ai_v1.wav` (48.7 s) -> pauzalar qisqartirildi (`ovoz_qisqart.py`) -> atempo 1.08 = 39.3 s.
+- Taxminiy gap boshlari (so'z sonidan baholangan, tekshirilmagan): hook 0.05, "Salom" 5.95,
+  "uchta sabab" 7.10, "Birinchi" 9.50, "Ikkinchi" 16.57, "Uchinchi" 23.00, "Bizda quyoshli" ~30.3, CTA ~33.65.
+
+## Musiqa nomzodlari (Kevin MacLeod, incompetech.com, CC BY 4.0 — postda kredit shart)
+- Carefree (ukulele) — drop 50.0 s -> 7.1 s ga; Chipper Doodle v2 — 25.0 s; Super Friendly — 13.0 s.
+- Kredit matni: "<Trek nomi>" Kevin MacLeod (incompetech.com) / Licensed under Creative Commons: By Attribution 4.0 / http://creativecommons.org/licenses/by/4.0/
+- Preview: `musiqa_sinov.py` (musiqa -21 LUFS, ducking -6 dB, yakuniy ~-14.6 LUFS, TP -1.5).
