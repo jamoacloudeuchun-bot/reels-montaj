@@ -59,7 +59,8 @@ ELEMENTLAR = [
     E(3, "personaj_2", 9.75, 240, 1400, 360, tebran=True),
     E(3, "buyum_2", 10.70, 560, 830, 210, yol=((560, 300), (560, 830), 0.30), kirish="tush"),
     E(3, "buyum_7", 12.60, 820, 1450, 230, kichray=(13.60, 0.5)),
-    # 4 — 2-sabab, tun: akkumulyator va jihozlar
+    # 4 — 2-sabab, tun: avval Quyoshvoy o'ylanib turadi (bo'sh joy to'ldirildi), keyin jihozlar
+    E(4, "personaj_6", 16.60, 290, 760, 460, tebran=True),
     E(4, "buyum_3", 18.00, 540, 1050, 460),
     E(4, "buyum_4", 19.50, 250, 1300, 400),
     E(4, "buyum_5", 20.30, 820, 790, 250),
