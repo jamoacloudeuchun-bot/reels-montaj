@@ -299,22 +299,74 @@ def shrift(o):
     return f
 
 
-@lru_cache(maxsize=64)
-def subtitr_rasm(matn):
-    o = 66 * S
+# Subtitr pastda, personajning oyoqlari ustida (yuz va qo'llar ochiq qoladi). Matn har doim oq (CLAUDE.md);
+# sariq faqat urg'u chizig'i / lenta chetida.
+import os  # noqa: E402
+SUB_USLUB = os.environ.get("SUB_USLUB", "A")   # A karta | B karaoke | C katta | D lenta
+SUB_Y = 1420
+SHRIFT_KATTA = "/usr/share/fonts/opentype/inter/Inter-Black.otf"
+
+
+def _sigdir(matn, shr, o, maks):
     d = ImageDraw.Draw(Image.new("RGBA", (10, 10)))
     while True:
-        f = shrift(o)
+        f = shr(o)
         l, tt, r, b = d.textbbox((0, 0), matn, font=f)
-        if r - l + 72 * S <= 720 * S:
-            break
+        if r - l <= maks:
+            return f, (l, tt, r, b)
         o -= 2 * S
+
+
+@lru_cache(maxsize=8)
+def shrift_katta(o):
+    return ImageFont.truetype(SHRIFT_KATTA, o)
+
+
+@lru_cache(maxsize=256)
+def subtitr_rasm(matn, uslub="A", faol=-1):
+    """faol — karaoke uslubida hozir aytilayotgan so'z indeksi."""
+    if uslub == "C":
+        matn = matn.upper()
+        f, (l, tt, r, b) = _sigdir(matn, shrift_katta, 84 * S, 700 * S)
+        sw = 7 * S
+        im = Image.new("RGBA", (r - l + 2 * sw + 8, b - tt + 2 * sw + 8), (0, 0, 0, 0))
+        ImageDraw.Draw(im).text((sw + 4 - l, sw + 4 - tt), matn, font=f, fill=(255, 255, 255, 255),
+                                stroke_width=sw, stroke_fill=(1, 18, 58, 255))
+        return im
+    f, (l, tt, r, b) = _sigdir(matn, shrift, 64 * S, (720 - 90) * S)
     pw, ph = 36 * S, 22 * S
-    im = Image.new("RGBA", (r - l + 2 * pw, b - tt + 2 * ph), (0, 0, 0, 0))
+    chap = 14 * S if uslub == "D" else 0
+    im = Image.new("RGBA", (r - l + 2 * pw + chap, b - tt + 2 * ph + (8 * S if uslub == "B" else 0)), (0, 0, 0, 0))
     dd = ImageDraw.Draw(im)
-    dd.rounded_rectangle((0, 0, im.width - 1, im.height - 1), radius=26 * S, fill=(0, 6, 24, 165))
-    dd.text((pw - l, ph - tt), matn, font=f, fill=(255, 255, 255, 255))
+    if uslub == "D":
+        dd.rounded_rectangle((0, 0, im.width - 1, im.height - 1), radius=18 * S, fill=(2, 43, 122, 235))
+        dd.rounded_rectangle((0, 0, chap + 8 * S, im.height - 1), radius=18 * S, fill=SARIQ)
+        dd.rectangle((chap, 0, chap + 8 * S, im.height - 1), fill=(2, 43, 122, 235))
+    else:
+        dd.rounded_rectangle((0, 0, im.width - 1, im.height - 1), radius=26 * S, fill=(0, 6, 24, 170))
+    x0 = pw + chap - l
+    dd.text((x0, ph - tt), matn, font=f, fill=(255, 255, 255, 255))
+    if uslub == "B" and faol >= 0:
+        sozlar = matn.split(" ")
+        oldi = " ".join(sozlar[:faol]) + (" " if faol else "")
+        xa = x0 + l + dd.textlength(oldi, font=f)
+        xb = xa + dd.textlength(sozlar[faol], font=f)
+        y = ph - tt + b + 4 * S
+        dd.rounded_rectangle((xa, y, xb, y + 6 * S), radius=3 * S, fill=SARIQ)
     return im
+
+
+def _faol_soz(c, t):
+    """Bo'lak ichida qaysi so'z aytilyapti (so'z uzunligiga mutanosib taqsimlash)."""
+    sozlar = c["matn"].split(" ")
+    uz = [len(w) + 1 for w in sozlar]
+    u = (t - c["a"]) / max(0.05, c["b"] - c["a"]) * sum(uz)
+    jam = 0
+    for i, n in enumerate(uz):
+        jam += n
+        if u < jam:
+            return i
+    return len(sozlar) - 1
 
 
 def subtitr(im, t):
@@ -329,9 +381,18 @@ def subtitr(im, t):
             keyingi = sl[i + 1] if i + 1 < len(sl) else None
             if not (keyingi and abs(keyingi["a"] - c["b"]) < 0.01):
                 a *= min(1.0, (c["b"] - t) / 0.2)
-            s = _alfa(subtitr_rasm(c["matn"]), a)
-            cy = 330 * S + (1 - k) * (12 if ulangan else 36) * S
-            im.alpha_composite(s, (round(W / 2 - s.width / 2), round(cy - s.height / 2)))
+            faol = _faol_soz(c, t) if SUB_USLUB == "B" else -1
+            s = subtitr_rasm(c["matn"], SUB_USLUB, faol)
+            dx, dy = 0, (1 - k) * (12 if ulangan else 36) * S
+            if SUB_USLUB == "C":                      # har bo'lak pop bilan
+                m = pop_masshtab(u / 0.24)
+                s = s.resize((max(1, round(s.width * m)), max(1, round(s.height * m))), Image.BICUBIC)
+                dy = 0
+            elif SUB_USLUB == "D" and not ulangan:    # chapdan sirpanib kiradi
+                dx, dy = -(1 - k) * 40 * S, 0
+            s = _alfa(s, a)
+            cy = SUB_Y * S + dy
+            im.alpha_composite(s, (round(W / 2 - s.width / 2 + dx), round(cy - s.height / 2)))
             return
 
 
