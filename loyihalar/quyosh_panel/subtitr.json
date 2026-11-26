@@ -1,0 +1,197 @@
+[
+ {
+  "matn": "Har oy svet",
+  "a": 0.05,
+  "b": 1.025
+ },
+ {
+  "matn": "uchun pul to‘laysiz.",
+  "a": 1.025,
+  "b": 2.15
+ },
+ {
+  "matn": "Quyosh esa tepada",
+  "a": 2.15,
+  "b": 2.95
+ },
+ {
+  "matn": "turib",
+  "a": 2.95,
+  "b": 3.475
+ },
+ {
+  "matn": "har kuni tekin",
+  "a": 3.475,
+  "b": 4.4
+ },
+ {
+  "matn": "nur beradi!",
+  "a": 4.4,
+  "b": 5.35
+ },
+ {
+  "matn": "Salom",
+  "a": 5.35,
+  "b": 5.95
+ },
+ {
+  "matn": "men Quyoshvoy!",
+  "a": 5.95,
+  "b": 7.1
+ },
+ {
+  "matn": "Quyosh panelini qo‘ydirish",
+  "a": 7.1,
+  "b": 8.325
+ },
+ {
+  "matn": "uchun uchta sabab.",
+  "a": 8.325,
+  "b": 9.5
+ },
+ {
+  "matn": "Birinchi",
+  "a": 9.5,
+  "b": 10.1
+ },
+ {
+  "matn": "svet puli kamayadi.",
+  "a": 10.1,
+  "b": 11.1
+ },
+ {
+  "matn": "Kunduzi uyingiz elektrni",
+  "a": 11.1,
+  "b": 12.5
+ },
+ {
+  "matn": "o‘zi ishlab chiqaradi",
+  "a": 12.5,
+  "b": 13.825
+ },
+ {
+  "matn": "oy oxiridagi hisob",
+  "a": 13.825,
+  "b": 14.775
+ },
+ {
+  "matn": "esa sezilarli kichrayadi.",
+  "a": 14.775,
+  "b": 16.325
+ },
+ {
+  "matn": "Ikkinchi",
+  "a": 16.325,
+  "b": 17.125
+ },
+ {
+  "matn": "svet o‘chsa ham",
+  "a": 17.125,
+  "b": 18.05
+ },
+ {
+  "matn": "qorong‘ida qolmaysiz.",
+  "a": 18.05,
+  "b": 19.175
+ },
+ {
+  "matn": "Akkumulyator bilan muzlatgich",
+  "a": 19.175,
+  "b": 20.8
+ },
+ {
+  "matn": "chiroq va internet",
+  "a": 20.8,
+  "b": 21.775
+ },
+ {
+  "matn": "ishlayveradi.",
+  "a": 21.775,
+  "b": 22.75
+ },
+ {
+  "matn": "Uchinchi",
+  "a": 22.75,
+  "b": 23.442
+ },
+ {
+  "matn": "bu xarajat emas",
+  "a": 23.7,
+  "b": 24.95
+ },
+ {
+  "matn": "sarmoya.",
+  "a": 24.95,
+  "b": 25.36
+ },
+ {
+  "matn": "Panel bir marta",
+  "a": 25.36,
+  "b": 26.5
+ },
+ {
+  "matn": "o‘rnatiladi",
+  "a": 26.5,
+  "b": 27.2
+ },
+ {
+  "matn": "tejalgan pul esa",
+  "a": 27.2,
+  "b": 28.25
+ },
+ {
+  "matn": "uning narxini asta-sekin",
+  "a": 28.25,
+  "b": 29.5
+ },
+ {
+  "matn": "qoplaydi.",
+  "a": 29.5,
+  "b": 30.025
+ },
+ {
+  "matn": "Bizda quyoshli kunlar",
+  "a": 30.025,
+  "b": 31.725
+ },
+ {
+  "matn": "ko‘p.",
+  "a": 31.725,
+  "b": 32.025
+ },
+ {
+  "matn": "Undan foydalanmaslik",
+  "a": 32.025,
+  "b": 33.65
+ },
+ {
+  "matn": "isrof!",
+  "a": 33.65,
+  "b": 34.116
+ },
+ {
+  "matn": "Qaysi sabab siz",
+  "a": 34.375,
+  "b": 35.2
+ },
+ {
+  "matn": "uchun muhimroq?",
+  "a": 35.2,
+  "b": 35.725
+ },
+ {
+  "matn": "Izohda yozing va",
+  "a": 35.725,
+  "b": 36.7
+ },
+ {
+  "matn": "uyida hali paneli",
+  "a": 36.7,
+  "b": 37.92
+ },
+ {
+  "matn": "yo‘q do‘stingizga yuboring!",
+  "a": 37.92,
+  "b": 39.371
+ }
+]

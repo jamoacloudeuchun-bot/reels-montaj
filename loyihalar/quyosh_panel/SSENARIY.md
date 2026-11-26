@@ -52,3 +52,8 @@ peshonada qora ko'zoynak, ko'kragida ko'k panel nishoni, oq qo'lqop, ko'k krosso
 - Foydalanuvchi qarori: Carefree olib tashlandi. Ovoz + 25 SFX, -14.2 LUFS, TP -1.7.
 - `python musiqa_sinov.py kesh/ovoz/ovoz_final.wav - 0 kesh/miks/musiqasiz_sfx.wav 7.1 vaqt_chizigi.json`
 - Natija: natija/quyosh_panel_reels_v2_musiqasiz.mp4 (gitda yo'q).
+
+## v3 (so'rov: soyasiz stikerlar, 4K 60 fps, subtitr, personaj pastda gapiradi)
+- stiker_tozala.py -> stikerlar/buyum, stikerlar/personaj_toza
+- Whisper so'z vaqtlari: sozlar_whisper.json (92 so'z, ssenariy bilan to'liq mos). Subtitr: subtitr.py -> subtitr.json (39 bo'lak)
+- vaqt_chizigi.json Whisper vaqtlariga ko'chirildi (28 SFX). Ovoz -14.1 LUFS, TP -1.7.

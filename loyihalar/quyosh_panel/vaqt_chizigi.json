@@ -1,30 +1,173 @@
 {
- "izoh": "Grafika hodisalari (s, yakuniy ovoz vaqtida). Gap boshlari RMS bo'yicha taxmin; SFX faqat shu grafikalarga.",
+ "izoh": "v2: Whisper so'z vaqtlari bo'yicha. SFX faqat grafikaga (stiker paydo bo'lishi, o'tish).",
  "hodisalar": [
-  {"t": 0.10, "sahna": 1, "grafika": "uy paydo bo'ladi", "sfx": "pop_4"},
-  {"t": 0.90, "sahna": 1, "grafika": "pul uchib chiqadi", "sfx": "whoosh_1797"},
-  {"t": 1.90, "sahna": 1, "grafika": "pul uchib chiqadi", "sfx": "whoosh_1797"},
-  {"t": 2.50, "sahna": 1, "grafika": "Quyoshvoy tepada paydo bo'ladi", "sfx": "pop_2"},
-  {"t": 5.85, "sahna": 2, "grafika": "o'tish: Quyoshvoy markazga, qo'l silkitadi", "sfx": "whoosh_1798"},
-  {"t": 7.30, "sahna": 2, "grafika": "panel ikonkasi", "sfx": "pop_1"},
-  {"t": 7.65, "sahna": 2, "grafika": "akkumulyator ikonkasi", "sfx": "pop_3"},
-  {"t": 8.00, "sahna": 2, "grafika": "kopilka ikonkasi", "sfx": "pop_5"},
-  {"t": 9.40, "sahna": 3, "grafika": "o'tish: uy katta", "sfx": "whoosh_1798"},
-  {"t": 11.00, "sahna": 3, "grafika": "panel tomga tushadi", "sfx": "hit_3"},
-  {"t": 13.60, "sahna": 3, "grafika": "pul dastasi kichrayadi", "sfx": "pop_6"},
-  {"t": 16.45, "sahna": 4, "grafika": "o'tish: tun", "sfx": "whoosh_1798"},
-  {"t": 18.00, "sahna": 4, "grafika": "akkumulyator", "sfx": "pop_4"},
-  {"t": 19.50, "sahna": 4, "grafika": "muzlatgich", "sfx": "pop_1"},
-  {"t": 20.30, "sahna": 4, "grafika": "lampochka", "sfx": "pop_3"},
-  {"t": 21.00, "sahna": 4, "grafika": "router", "sfx": "pop_5"},
-  {"t": 22.90, "sahna": 5, "grafika": "o'tish: kun", "sfx": "whoosh_1798"},
-  {"t": 23.40, "sahna": 5, "grafika": "panel", "sfx": "pop_2"},
-  {"t": 25.50, "sahna": 5, "grafika": "kopilka", "sfx": "pop_6"},
-  {"t": 27.00, "sahna": 5, "grafika": "tanga tushadi", "sfx": "hit_1"},
-  {"t": 27.50, "sahna": 5, "grafika": "tanga tushadi", "sfx": "hit_2"},
-  {"t": 28.00, "sahna": 5, "grafika": "tanga tushadi", "sfx": "hit_3"},
-  {"t": 30.20, "sahna": 6, "grafika": "o'tish: Quyoshvoy sakraydi", "sfx": "whoosh_1797"},
-  {"t": 33.55, "sahna": 7, "grafika": "o'tish: Quyoshvoy pastga ko'rsatadi", "sfx": "whoosh_1798"},
-  {"t": 33.75, "sahna": 7, "grafika": "Quyoshvoy paydo bo'ladi", "sfx": "pop_2"}
+  {
+   "t": 0.1,
+   "sahna": 1,
+   "grafika": "uy paydo bo'ladi",
+   "sfx": "pop_4"
+  },
+  {
+   "t": 1.2,
+   "sahna": 1,
+   "grafika": "pul uchib ketadi",
+   "sfx": "whoosh_1797"
+  },
+  {
+   "t": 1.75,
+   "sahna": 1,
+   "grafika": "pul uchib ketadi",
+   "sfx": "whoosh_1797"
+  },
+  {
+   "t": 2.05,
+   "sahna": 1,
+   "grafika": "Quyoshvoy yerda paydo bo'ladi",
+   "sfx": "pop_2"
+  },
+  {
+   "t": 5.15,
+   "sahna": 2,
+   "grafika": "o'tish",
+   "sfx": "whoosh_1798"
+  },
+  {
+   "t": 7.35,
+   "sahna": 2,
+   "grafika": "panel",
+   "sfx": "pop_1"
+  },
+  {
+   "t": 8.46,
+   "sahna": 2,
+   "grafika": "pul ikonkasi",
+   "sfx": "pop_3"
+  },
+  {
+   "t": 8.72,
+   "sahna": 2,
+   "grafika": "lampochka ikonkasi",
+   "sfx": "pop_5"
+  },
+  {
+   "t": 8.98,
+   "sahna": 2,
+   "grafika": "kopilka ikonkasi",
+   "sfx": "pop_6"
+  },
+  {
+   "t": 9.3,
+   "sahna": 3,
+   "grafika": "o'tish: uy",
+   "sfx": "whoosh_1798"
+  },
+  {
+   "t": 11.46,
+   "sahna": 3,
+   "grafika": "panel tomga tushadi",
+   "sfx": "hit_3"
+  },
+  {
+   "t": 14.38,
+   "sahna": 3,
+   "grafika": "pul dastasi",
+   "sfx": "pop_4"
+  },
+  {
+   "t": 15.74,
+   "sahna": 3,
+   "grafika": "pul kichrayadi",
+   "sfx": "pop_6"
+  },
+  {
+   "t": 16.3,
+   "sahna": 4,
+   "grafika": "o'tish: tun",
+   "sfx": "whoosh_1798"
+  },
+  {
+   "t": 19.1,
+   "sahna": 4,
+   "grafika": "akkumulyator",
+   "sfx": "pop_4"
+  },
+  {
+   "t": 20.04,
+   "sahna": 4,
+   "grafika": "muzlatgich",
+   "sfx": "pop_1"
+  },
+  {
+   "t": 20.86,
+   "sahna": 4,
+   "grafika": "lampochka",
+   "sfx": "pop_3"
+  },
+  {
+   "t": 21.42,
+   "sahna": 4,
+   "grafika": "router",
+   "sfx": "pop_5"
+  },
+  {
+   "t": 22.75,
+   "sahna": 5,
+   "grafika": "o'tish: kun",
+   "sfx": "whoosh_1798"
+  },
+  {
+   "t": 24.72,
+   "sahna": 5,
+   "grafika": "kopilka",
+   "sfx": "pop_6"
+  },
+  {
+   "t": 25.36,
+   "sahna": 5,
+   "grafika": "panel",
+   "sfx": "pop_2"
+  },
+  {
+   "t": 27.43,
+   "sahna": 5,
+   "grafika": "tanga kopilkaga tushadi",
+   "sfx": "hit_1"
+  },
+  {
+   "t": 27.97,
+   "sahna": 5,
+   "grafika": "tanga kopilkaga tushadi",
+   "sfx": "hit_2"
+  },
+  {
+   "t": 28.77,
+   "sahna": 5,
+   "grafika": "tanga kopilkaga tushadi",
+   "sfx": "hit_3"
+  },
+  {
+   "t": 30.0,
+   "sahna": 6,
+   "grafika": "o'tish: Quyoshvoy sakraydi",
+   "sfx": "whoosh_1797"
+  },
+  {
+   "t": 30.62,
+   "sahna": 6,
+   "grafika": "panel",
+   "sfx": "pop_1"
+  },
+  {
+   "t": 34.05,
+   "sahna": 7,
+   "grafika": "o'tish: CTA",
+   "sfx": "whoosh_1798"
+  },
+  {
+   "t": 34.15,
+   "sahna": 7,
+   "grafika": "Quyoshvoy pastga ko'rsatadi",
+   "sfx": "pop_2"
+  }
  ]
 }
