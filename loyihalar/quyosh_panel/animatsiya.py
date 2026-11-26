@@ -47,9 +47,9 @@ SAHNALAR = [
     (34.10, DAVOMIYLIK, "kun"),  # CTA
 ]
 
-# Quyoshvoy: yerda (oyoqlari y=1580), markazda; poza almashganda pop
-PERSONAJ_OYOQ = (540, 1580)
-PERSONAJ_H = 520
+# Quyoshvoy: faqat pastda, yerda (oyoqlari y=1585), markazda; poza almashganda pop
+PERSONAJ_OYOQ = (540, 1585)
+PERSONAJ_H = 480
 POZALAR = [(2.05, "personaj_1"), (9.40, "personaj_2"), (16.40, "personaj_6"),
            (22.85, "personaj_3"), (30.10, "personaj_5"), (34.15, "personaj_2")]
 
@@ -58,34 +58,34 @@ def E(sahna, nom, t0, cx, cy, h, **kw):
     return dict(sahna=sahna, nom=nom, t0=t0, cx=cx, cy=cy, h=h, **kw)
 
 
-# buyumlar tepada: y 480–1000 oralig'i (subtitr ~y 330, personaj y 1060–1580)
+# buyumlar tepada: y 400–960 oralig'i (subtitr ~y 330, personaj y ~1070–1585)
 ELEMENTLAR = [
     # 1 — hook: uy, pul uchib ketadi ("pul to'laysiz")
-    E(1, "buyum_1", 0.10, 540, 760, 440),
-    E(1, "buyum_7", 1.20, 540, 760, 170, yol=((540, 760), (230, 500), 0.8), yoqol=2.2),
-    E(1, "buyum_7", 1.75, 540, 760, 170, yol=((540, 760), (850, 500), 0.8), yoqol=2.75),
+    E(1, "buyum_1", 0.10, 540, 700, 400),
+    E(1, "buyum_7", 1.20, 540, 700, 150, yol=((540, 700), (270, 470), 0.8), yoqol=2.2),
+    E(1, "buyum_7", 1.75, 540, 700, 150, yol=((540, 700), (810, 470), 0.8), yoqol=2.75),
     # 2 — "Quyosh panelini" + "uchta sabab" ikonkalari (raqamsiz)
-    E(2, "buyum_2", 7.35, 540, 600, 260),
-    E(2, "buyum_7", 8.46, 260, 920, 150),
-    E(2, "buyum_5", 8.72, 540, 920, 180),
-    E(2, "buyum_8", 8.98, 820, 920, 160),
+    E(2, "buyum_2", 7.35, 540, 560, 240),
+    E(2, "buyum_7", 8.46, 290, 840, 140),
+    E(2, "buyum_5", 8.72, 540, 840, 170),
+    E(2, "buyum_8", 8.98, 790, 840, 150),
     # 3 — 1-sabab: panel tomga tushadi ("Kunduzi"), pul kichrayadi ("kichrayadi")
-    E(3, "buyum_1", 9.45, 540, 780, 460),
-    E(3, "buyum_2", 11.16, 560, 525, 160, yol=((560, 250), (560, 525), 0.30), kirish="tush"),
-    E(3, "buyum_7", 14.38, 860, 950, 180, kichray=(15.74, 0.5)),
+    E(3, "buyum_1", 9.45, 540, 720, 420),
+    E(3, "buyum_2", 11.16, 558, 483, 150, yol=((558, 310), (558, 483), 0.30), kirish="tush"),
+    E(3, "buyum_7", 14.38, 815, 900, 160, kichray=(15.74, 0.5)),
     # 4 — 2-sabab, tun: jihozlar so'z bilan birga
-    E(4, "buyum_3", 19.10, 540, 720, 400),
-    E(4, "buyum_4", 20.04, 230, 800, 330),
-    E(4, "buyum_5", 20.86, 850, 560, 200),
-    E(4, "buyum_6", 21.42, 850, 930, 170),
+    E(4, "buyum_3", 19.10, 540, 680, 380),
+    E(4, "buyum_4", 20.04, 275, 760, 300),
+    E(4, "buyum_5", 20.86, 815, 520, 180),
+    E(4, "buyum_6", 21.42, 815, 880, 150),
     # 5 — 3-sabab: kopilka ("sarmoya"), panel ("Panel"), tangalar tushadi
-    E(5, "buyum_8", 24.72, 610, 860, 330),
-    E(5, "buyum_2", 25.36, 250, 560, 240),
-    E(5, "buyum_7", 27.08, 280, 660, 100, yol=((280, 660), (600, 790), 0.35), yoqol=27.48, kirish="tush"),
-    E(5, "buyum_7", 27.62, 280, 660, 100, yol=((280, 660), (600, 790), 0.35), yoqol=28.02, kirish="tush"),
-    E(5, "buyum_7", 28.42, 280, 660, 100, yol=((280, 660), (600, 790), 0.35), yoqol=28.82, kirish="tush"),
-    # 6 — xulosa: quyosh nuri (panel) yuqorida
-    E(6, "buyum_2", 30.62, 540, 700, 300),
+    E(5, "buyum_8", 24.72, 610, 800, 300),
+    E(5, "buyum_2", 25.36, 285, 520, 220),
+    E(5, "buyum_7", 27.08, 300, 600, 100, yol=((300, 600), (610, 740), 0.35), yoqol=27.48, kirish="tush"),
+    E(5, "buyum_7", 27.62, 300, 600, 100, yol=((300, 600), (610, 740), 0.35), yoqol=28.02, kirish="tush"),
+    E(5, "buyum_7", 28.42, 300, 600, 100, yol=((300, 600), (610, 740), 0.35), yoqol=28.82, kirish="tush"),
+    # 6 — xulosa: panel yuqorida
+    E(6, "buyum_2", 30.62, 540, 640, 280),
     # 7 — CTA: personaj pastga ko'rsatadi (buyumsiz)
 ]
 
@@ -304,26 +304,35 @@ def kadr(t):
     return im.convert("RGB")
 
 
+SAFE = (150, 230, 930, 1595)   # Instagram safe zona (CLAUDE.md), hamma narsa uchun qattiq
+
+
 def safe_zona_tekshir():
+    """Hamma narsa eng katta holatida (pop 106%, cho'zilish, chayqalish, sakrash) safe zona ichidami."""
+    x0s, y0s, x1s, y1s = SAFE
     xato = []
     for e in ELEMENTLAR:
-        s = stiker(e["nom"], e["h"] * S)
+        s = _asl(e["nom"])
+        h = e["h"] * 1.06 + 8                     # pop + "nafas" tebranishi
+        w = s.width * e["h"] / s.height * 1.06
         pts = [(e["cx"], e["cy"])] + ([e["yol"][1]] if "yol" in e else [])
         for cx, cy in pts:
-            x0, x1 = cx - s.width / S / 2, cx + s.width / S / 2
-            y0, y1 = cy - s.height / S / 2 - 6, cy + s.height / S / 2 + 6
-            if x0 < 80 or x1 > 1000 or y0 < 230 or y1 > 1595:
-                xato.append((e["nom"], e["t0"], round(x0), round(y0), round(x1), round(y1)))
-    for _, p in POZALAR:                       # personaj (maks. cho'zilish 1.06*1.045)
+            if cx - w / 2 < x0s or cx + w / 2 > x1s or cy - h / 2 < y0s or cy + h / 2 > y1s:
+                xato.append((e["nom"], e["t0"], round(cx - w / 2), round(cy - h / 2), round(cx + w / 2), round(cy + h / 2)))
+    for _, p in POZALAR:
         s = _asl(p)
         hh = PERSONAJ_H * 1.06 * 1.045
         ww = s.width * PERSONAJ_H / s.height * 1.06
-        if PERSONAJ_OYOQ[1] - hh - 60 < 230 or PERSONAJ_OYOQ[0] - ww / 2 < 80 or PERSONAJ_OYOQ[0] + ww / 2 > 1000:
-            xato.append((p, "personaj"))
+        rad = math.radians(4.2)                   # maks. chayqalish burchagi
+        bw = ww * math.cos(rad) + hh * math.sin(rad)
+        kotar = 14 + (60 if p == "personaj_5" else 0)
+        tepa = PERSONAJ_OYOQ[1] - kotar - hh
+        if tepa < y0s or PERSONAJ_OYOQ[0] - bw / 2 < x0s or PERSONAJ_OYOQ[0] + bw / 2 > x1s or PERSONAJ_OYOQ[1] > y1s:
+            xato.append((p, round(PERSONAJ_OYOQ[0] - bw / 2), round(tepa), round(PERSONAJ_OYOQ[0] + bw / 2)))
     for c in subtitrlar():
         s = subtitr_rasm(c["matn"])
-        if s.width / S > 780 or 330 - s.height / S / 2 < 230:
-            xato.append(("subtitr", c["matn"], s.width / S))
+        if 540 - s.width / S / 2 < x0s or 330 - s.height / S / 2 - 36 < y0s:
+            xato.append(("subtitr", c["matn"], round(s.width / S)))
     return xato
 
 
