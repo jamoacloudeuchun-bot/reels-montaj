@@ -21,3 +21,9 @@ Maqsad: botga foydalanuvchi + kanalga obunachi. Format: Quyosh paneli loyihasida
 - asl/jurnalist_pozalar.png -> stikerlar/poza/poza_1..6 (salom, pastga ko'rsatish, bosh barmoq, o'ylash, sakrash, ikki qo'l ochiq).
 - yuz_top.py -> yuz.json (har pozada og'iz va ko'z joyi, avtomatik).
 - gapir.py: og'iz vizemlari (X, M, kichik, A, E, O) + ko'z qirpish; lab_sinov.vizem_chizigi ovoz+Whisper bo'yicha.
+
+## Ovoz va animatsiya (v1)
+- asl/ovoz_ai_v1.wav (44.1 s) -> pauzalar qisqartirildi (36.3 s) -> atempo 1.06 = 34.25 s (+0.7 s dum = 34.95 s).
+- Whisper: 82 so'z, ssenariy bilan to'liq mos (sozlar_whisper.json). Subtitr: subtitr.json (35 bo'lak, "SmartUzbek" qo'shib).
+- vaqt_chizigi.json: 22 SFX. Yakuniy ovoz -14.2 LUFS, TP -1.6.
+- animatsiya.py: brend fon, gapiruvchi jurnalist, buyumlar, logo karta, ö ğ ş ç kartalari. Piksel safe zona: 0 ta chiqish.

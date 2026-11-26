@@ -13,12 +13,13 @@ import sys
 
 import numpy as np
 
-sys.path.insert(0, ".")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent))
 from ovoz_qisqart import oqi  # noqa: E402
 
-MATN = "OVOZ_MATNI.txt"
-WHISPER = "kesh/ovoz/sozlar_whisper.json"
-OVOZ = "kesh/ovoz/ovoz_final.wav"
+# boshqa loyihalar uchun: python subtitr.py [matn.txt] [sozlar_whisper.json] [ovoz.wav]  (joriy papkada)
+MATN = sys.argv[1] if len(sys.argv) > 1 else "OVOZ_MATNI.txt"
+WHISPER = sys.argv[2] if len(sys.argv) > 2 else "kesh/ovoz/sozlar_whisper.json"
+OVOZ = sys.argv[3] if len(sys.argv) > 3 else "kesh/ovoz/ovoz_final.wav"
 MAKS_SOZ, MAKS_HARF = 3, 20
 
 
@@ -29,7 +30,7 @@ def norm(s):
 
 
 def sozlar_vaqti():
-    sc = open(MATN, encoding="utf-8").read().split()
+    sc = [w for w in open(MATN, encoding="utf-8").read().split() if norm(w)]  # yolg'iz tire va h.k. tashlanadi
     wh = json.load(open(WHISPER))
     # harf -> whisper vaqti (har harfga so'z ichida chiziqli interpolatsiya)
     w_harf, w_t = [], []

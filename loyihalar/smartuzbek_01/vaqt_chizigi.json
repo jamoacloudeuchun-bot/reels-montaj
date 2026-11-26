@@ -1,0 +1,115 @@
+{
+ "izoh": "SmartUzbek 01: Whisper so'z vaqtlari bo'yicha; SFX faqat grafikaga.",
+ "hodisalar": [
+  {
+   "t": 0.15,
+   "grafika": "buyum: qum soat",
+   "sfx": "pop_4"
+  },
+  {
+   "t": 0.75,
+   "grafika": "ovozli xabar",
+   "sfx": "pop_1"
+  },
+  {
+   "t": 2.15,
+   "grafika": "hujjat",
+   "sfx": "pop_3"
+  },
+  {
+   "t": 4.85,
+   "grafika": "o'tish",
+   "sfx": "whoosh_1798"
+  },
+  {
+   "t": 6.24,
+   "grafika": "logo",
+   "sfx": "pop_2"
+  },
+  {
+   "t": 8.22,
+   "grafika": "ikonka",
+   "sfx": "pop_1"
+  },
+  {
+   "t": 8.45,
+   "grafika": "ikonka",
+   "sfx": "pop_3"
+  },
+  {
+   "t": 8.68,
+   "grafika": "ikonka",
+   "sfx": "pop_5"
+  },
+  {
+   "t": 9.05,
+   "grafika": "o'tish: telefon",
+   "sfx": "whoosh_1798"
+  },
+  {
+   "t": 10.74,
+   "grafika": "xabar telefonga uchadi",
+   "sfx": "whoosh_1797"
+  },
+  {
+   "t": 11.54,
+   "grafika": "hujjat chiqadi",
+   "sfx": "pop_6"
+  },
+  {
+   "t": 15.25,
+   "grafika": "o'tish: hujjat",
+   "sfx": "whoosh_1798"
+  },
+  {
+   "t": 17.3,
+   "grafika": "qalam o'tadi",
+   "sfx": "whoosh_1797"
+  },
+  {
+   "t": 17.78,
+   "grafika": "yashil belgi",
+   "sfx": "pop_2"
+  },
+  {
+   "t": 20.25,
+   "grafika": "o'tish",
+   "sfx": "whoosh_1798"
+  },
+  {
+   "t": 21.0,
+   "grafika": "eski harflar",
+   "sfx": "pop_1"
+  },
+  {
+   "t": 22.3,
+   "grafika": "yangi harflar",
+   "sfx": "pop_3"
+  },
+  {
+   "t": 22.6,
+   "grafika": "yangi harflar",
+   "sfx": "pop_5"
+  },
+  {
+   "t": 24.85,
+   "grafika": "o'tish: sovg'a",
+   "sfx": "whoosh_1798"
+  },
+  {
+   "t": 27.52,
+   "grafika": "sovg'a: bepul",
+   "sfx": "hit_3"
+  },
+  {
+   "t": 27.9,
+   "grafika": "o'tish: CTA",
+   "sfx": "whoosh_1798"
+  },
+  {
+   "t": 28.05,
+   "grafika": "telefon + logo",
+   "sfx": "pop_2"
+  }
+ ]
+}
