@@ -51,31 +51,31 @@ def E(sahna, nom, t0, cx, cy, h, **kw):
 
 ELEMENTLAR = [
     # 1 — hook: qum soat ("soatlik"), ovozli xabar ("ovozli"), hujjat ("matnga"); "soatlab" — urg'u
-    E(1, "buyum_1", 0.15, 540, 600, 320, urg=[3.54]),
-    E(1, "buyum_3", 0.75, 265, 520, 130),
-    E(1, "buyum_4", 2.15, 815, 560, 170),
+    E(1, "buyum_1", 0.15, 540, 510, 384, urg=[3.54]),
+    E(1, "buyum_3", 0.75, 265, 430, 156),
+    E(1, "buyum_4", 2.15, 815, 470, 204),
     # 2 — salom, logo ("SmartUzbek"), 3 sabab ikonkalari ("uchta sabab")
-    E(2, "logo", 6.24, 540, 560, 300),
-    E(2, "buyum_3", 8.22, 300, 790, 110),
-    E(2, "buyum_5", 8.45, 540, 790, 130),
-    E(2, "harf:ö:sariq", 8.68, 780, 790, 110),
+    E(2, "logo", 6.24, 540, 470, 360),
+    E(2, "buyum_3", 8.22, 300, 700, 132),
+    E(2, "buyum_5", 8.45, 540, 700, 156),
+    E(2, "harf:ö:sariq", 8.68, 780, 700, 132),
     # 3 — 1-sabab: telefon, ovozli xabar telefonga kiradi ("yuborasiz"), hujjat chiqadi ("matnga aylanadi")
-    E(3, "buyum_2", 9.15, 540, 610, 340),
-    E(3, "buyum_3", 10.74, 540, 580, 150, yol=((250, 470), (540, 580), 0.35), yoqol=11.15, kirish="uch"),
-    E(3, "buyum_4", 11.54, 805, 580, 220, yol=((540, 610), (805, 580), 0.35)),
+    E(3, "buyum_2", 9.15, 540, 520, 408),
+    E(3, "buyum_3", 10.74, 540, 490, 180, yol=((250, 380), (540, 490), 0.35), yoqol=11.15, kirish="uch"),
+    E(3, "buyum_4", 11.54, 805, 490, 264, yol=((540, 520), (805, 490), 0.35)),
     # 4 — 2-sabab: hujjat, qalam ustidan o'tadi ("tuzatib"), yashil belgi ("beradi")
-    E(4, "buyum_4", 15.40, 500, 590, 320),
-    E(4, "buyum_5", 17.30, 680, 640, 190, yol=((320, 500), (680, 640), 0.50), kirish="uch"),
-    E(4, "buyum_6", 17.78, 790, 740, 140),
+    E(4, "buyum_4", 15.40, 500, 500, 384),
+    E(4, "buyum_5", 17.30, 680, 550, 228, yol=((320, 410), (680, 550), 0.50), kirish="uch"),
+    E(4, "buyum_6", 17.78, 790, 650, 168),
     # 5 — 3-sabab: eski yozuv ("eski") -> yangi harflar ("yangi yozuvga"), "Yangi harflar" — urg'u
-    E(5, "harf:o‘:oq", 21.00, 270, 540, 110), E(5, "harf:g‘:oq", 21.12, 450, 540, 110),
-    E(5, "harf:sh:oq", 21.24, 630, 540, 110), E(5, "harf:ch:oq", 21.36, 810, 540, 110),
-    E(5, "harf:ö:sariq", 22.30, 270, 760, 130, urg=[23.80]), E(5, "harf:ğ:sariq", 22.45, 450, 760, 130, urg=[23.95]),
-    E(5, "harf:ş:sariq", 22.60, 630, 760, 130, urg=[24.10]), E(5, "harf:ç:sariq", 22.75, 810, 760, 130, urg=[24.25]),
+    E(5, "harf:o‘:oq", 21.00, 270, 450, 132), E(5, "harf:g‘:oq", 21.12, 450, 450, 132),
+    E(5, "harf:sh:oq", 21.24, 630, 450, 132), E(5, "harf:ch:oq", 21.36, 810, 450, 132),
+    E(5, "harf:ö:sariq", 22.30, 270, 670, 156, urg=[23.80]), E(5, "harf:ğ:sariq", 22.45, 450, 670, 156, urg=[23.95]),
+    E(5, "harf:ş:sariq", 22.60, 630, 670, 156, urg=[24.10]), E(5, "harf:ç:sariq", 22.75, 810, 670, 156, urg=[24.25]),
     # 6 — "hozircha bepul": sovg'a qutisi, "bepul" — urg'u
-    E(6, "buyum_7", 25.00, 540, 600, 320, urg=[27.52]),
+    E(6, "buyum_7", 25.00, 540, 510, 384, urg=[27.52]),
     # 7 — CTA: telefon ekranida logo
-    E(7, "telefon_logo", 28.05, 540, 600, 390),
+    E(7, "telefon_logo", 28.05, 540, 510, 468),
 ]
 
 
@@ -302,7 +302,7 @@ def shrift(o):
 # Subtitr pastda, personajning oyoqlari ustida (yuz va qo'llar ochiq qoladi). Matn har doim oq (CLAUDE.md);
 # sariq faqat urg'u chizig'i / lenta chetida.
 import os  # noqa: E402
-SUB_USLUB = os.environ.get("SUB_USLUB", "A")   # A karta | B karaoke | C katta | D lenta
+SUB_USLUB = os.environ.get("SUB_USLUB", "B")   # tanlangan: B karaoke (A karta | C katta | D lenta)
 SUB_Y = 1420
 SHRIFT_KATTA = "/usr/share/fonts/opentype/inter/Inter-Black.otf"
 
@@ -356,8 +356,17 @@ def subtitr_rasm(matn, uslub="A", faol=-1):
     return im
 
 
+KARAOKE_KECHIKISH = 0.12   # Whisper so'z boshlari ~0.2 s oldinda (CLAUDE.md), chiziq so'z bilan birga yursin
+
+
 def _faol_soz(c, t):
-    """Bo'lak ichida qaysi so'z aytilyapti (so'z uzunligiga mutanosib taqsimlash)."""
+    """Bo'lak ichida qaysi so'z aytilyapti: Whisper so'z boshlari bo'yicha (bo'lmasa — uzunlikka mutanosib)."""
+    if "sozlar" in c:
+        i = 0
+        for k, ts in enumerate(c["sozlar"]):
+            if t >= ts + (KARAOKE_KECHIKISH if k else 0):
+                i = k
+        return i
     sozlar = c["matn"].split(" ")
     uz = [len(w) + 1 for w in sozlar]
     u = (t - c["a"]) / max(0.05, c["b"] - c["a"]) * sum(uz)

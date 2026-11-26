@@ -88,7 +88,9 @@ if __name__ == "__main__":
         yaqin = [o for o in ons if abs(o - a) <= 0.25]
         if yaqin:
             a = min(yaqin, key=lambda o: abs(o - a))
-        chiq.append({"matn": " ".join(x[0] for x in b).rstrip(",:"), "a": round(a, 3), "b": round(b[-1][2], 3)})
+        chiq.append({"matn": " ".join(x[0] for x in b).rstrip(",:"), "a": round(a, 3), "b": round(b[-1][2], 3),
+                     # karaoke uchun so'z boshlari (Whisper, bo'lak boshi RMS bo'yicha tuzatilgan)
+                     "sozlar": [round(max(a, x[1]), 3) for x in b]})
     for i in range(len(chiq) - 1):        # keyingi bo'lakkacha ushlab turish (0.4 s dan kichik oraliq)
         if chiq[i + 1]["a"] - chiq[i]["b"] < 0.4:
             chiq[i]["b"] = chiq[i + 1]["a"]
